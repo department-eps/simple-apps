@@ -8,7 +8,7 @@ export default function Inputs() {
     Us: "1",
     Ur: "1",
     X: "1",
-    R: "1",
+    R: "0",
   });
 
   const [plotData] = useState(null);
