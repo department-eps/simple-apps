@@ -39,8 +39,8 @@ export default function MenuAppBar() {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Power-angle eqution</MenuItem>
-              <MenuItem onClick={handleClose}>Option 2</MenuItem>
+              <MenuItem onClick={() => { handleClose(); window.location.href = "/"; }}>Power-angle equation</MenuItem>
+              <MenuItem onClick={() => { handleClose(); window.location.href = "/rotor-angle"; }}>Rotor-angle equation</MenuItem>
               <MenuItem onClick={handleClose}>Option 3</MenuItem>
             </Menu>
             <Typography variant="h5" component="div" sx={{ flexGrow: 1, color: "black" }}>
