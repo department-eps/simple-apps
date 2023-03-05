@@ -8,10 +8,10 @@ function App() {
   return (
     <div>
       <MenuAppBar />
-      <Router>
+      <Router basename="/simple-apps">
         <Routes>
-          <Route path="/simple-apps/" element={<Inputs />} />
-          <Route path="/simple-apps/rotor-angle" element={<RotorAngle />} />
+          <Route path="/" element={<Inputs />} />
+          <Route path="/rotor-angle" element={<RotorAngle />} />
         </Routes>
       </Router>
       <Footer />
