@@ -1,5 +1,3 @@
-
-
 import Plotly from 'react-plotly.js';
 import { abs, atan2, complex, cos, divide, pi, sin } from 'mathjs';
 
