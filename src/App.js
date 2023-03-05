@@ -10,8 +10,8 @@ function App() {
       <MenuAppBar />
       <Router>
         <Routes>
-          <Route path="/" element={<Inputs />} />
-          <Route path="/rotor-angle" element={<RotorAngle />} />
+          <Route path="/simple-apps/" element={<Inputs />} />
+          <Route path="/simple-apps/rotor-angle" element={<RotorAngle />} />
         </Routes>
       </Router>
       <Footer />
