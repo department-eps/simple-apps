@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import Plot from "./PlotRotorAngle";
 
 export default function RotorAngle() {
     const [values, setValues] = useState({
@@ -8,9 +9,9 @@ export default function RotorAngle() {
         Xd: "0.3",
         U1: "1",
         P1: "0.5",
-        H: "35",
+        H: "3.5",
         U2: "1",
-        titaU2: "0"
+        thetaU2: "0"
     });
 
     //const [plotData] = useState(null);
@@ -85,13 +86,14 @@ export default function RotorAngle() {
                             margin="normal"
                         />
                         <TextField
-                            name="titaU2"
+                            name="thetaU2"
                             label="θ"
                             value={values.Xd}
                             onChange={handleChange}
                             margin="normal"
                         />
                     </Box>
+                    <Plot values={values}></Plot>
                 </Box>
             </Grid>
         </Grid>
