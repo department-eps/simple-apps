@@ -1,4 +1,5 @@
 import { complex } from "mathjs";
+import Plotly from 'react-plotly.js';
 import { calculate, convert } from "../../utils/utils";
 
 const Z = complex(0.05, 0.5);
@@ -6,13 +7,55 @@ export default function Plot({ values }) {
     const convertedValues = {};
     Object.entries(values).forEach(([key, value]) => {
         convertedValues[key] = Number(value);
-    }); 
-    
+    });
+
     const { Ra, Xd, U1, P1, H, U2, thetaU2 } = ({ ...convertedValues });
-    getData(Ra, Xd, U1, P1, H, U2, thetaU2);
+    const data = getData(Ra, Xd, U1, P1, H, U2, thetaU2);
+    return graph(data)
 };
 
-function  getData(Ra, Xd, U1, P1, H, U2, thetaU2) {
+function graph(roots) {
+    debugger;
+    let data = [{
+        x: [roots.root1.re],
+        y: [roots.root1.im],
+        mode: 'markers',
+        type: 'scatter',
+        name: 'λ1'
+    },
+    {
+        x: [roots.root2.re],
+        y: [roots.root2.im],
+        mode: 'markers',
+        type: 'scatter',
+        name: 'λ2'
+    }]
+
+    let layout = {
+        title: "Power-Angle equation",
+        width: 800,
+        height: 600,
+        xaxis: {
+            title: "Real [Np/s]",
+            showgrid: true,
+            colorgrid: "yellow"
+        },
+        yaxis: {
+            title: "Imag [rad/s]",
+            showgrid: true,
+            colorgrid: "gray"
+        },
+    };
+    return (
+        <Plotly
+            data={data}
+            layout={layout}
+        />
+    )
+}
+
+
+function getData(Ra, Xd, U1, P1, H, U2, thetaU2) {
     // angular frequency for 50hz
     const omega0 = calculate.omega0();
     // own and mutual conductivites
@@ -24,10 +67,10 @@ function  getData(Ra, Xd, U1, P1, H, U2, thetaU2) {
     const Q1 = calculate.Q1(U1, y, alpha, U2, theta);
     // voltage in the terminal
     const Ug0 = calculate.Ug0(U1, theta);
-    const {re: Ur0, im: Ui0} = {...Ug0};
+    const { re: Ur0, im: Ui0 } = { ...Ug0 };
     // current in the terminal
     const Ig0 = calculate.Ig0(P1, Q1, Ug0);
-    const {re: Ir0, im:Ii0} = {...Ig0};
+    const { re: Ir0, im: Ii0 } = { ...Ig0 };
     // generator mode established
     const delta0 = convert.toDegree(calculate.delta0(Ug0, Ra, Xd, Ig0));
     const Id0 = calculate.Id0(Ir0, delta0, Ii0);
@@ -46,4 +89,5 @@ function  getData(Ra, Xd, U1, P1, H, U2, thetaU2) {
     const roots = calculate.rootsOfPolynome(Kd, H, Ks, omega0);
     // decrement
     const ksi = calculate.ksi(roots.root1);
+    return roots
 };
