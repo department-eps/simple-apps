@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Grid, Typography } from "@mui/material";
+import { TextField, Grid, Typography, Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
 import Plot from "./PlotRotorAngle";
 
@@ -40,60 +40,82 @@ export default function RotorAngle() {
                 >
                     <Typography variant="h5">Generator:</Typography>
                     <Box sx={{ display: "flex", gap: "16px" }}>
-                        <TextField
-                            name="Ra"
-                            label="Ra"
-                            value={values.Ra}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
-                        <TextField
-                            name="Xd"
-                            label="Xd"
-                            value={values.Xd}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
-                        <TextField
-                            name="U1"
-                            label="U1"
-                            value={values.U1}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
-                        <TextField
-                            name="P1"
-                            label="P1"
-                            value={values.P1}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
-                        <TextField
-                            name="H"
-                            label="H"
-                            value={values.H}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the Ra field</Typography>}>
+                            <TextField
+                                name="Ra"
+                                label="Ra [pu]"
+                                value={values.Ra}
+                                onChange={handleChange}
+                                margin="normal"
+                                type="number"
+                            />
+                        </Tooltip>
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the Xd field</Typography>}>
+                            <TextField
+                                name="Xd"
+                                label="Xd [pu]"
+                                value={values.Xd}
+                                onChange={handleChange}
+                                margin="normal"
+                            />
+                        </Tooltip>
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the U1 field</Typography>}>
+                            <TextField
+                                name="U1"
+                                label="U1 [pu]"
+                                value={values.U1}
+                                onChange={handleChange}
+                                margin="normal"
+                                type="number"
+                            />
+                        </Tooltip>
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the P1 field</Typography>}>
+                            <TextField
+                                name="P1"
+                                label="P1 [pu]"
+                                value={values.P1}
+                                onChange={handleChange}
+                                margin="normal"
+                                type="number"
+                            />
+                        </Tooltip>
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the H field</Typography>}>
+                            <TextField
+                                name="H"
+                                label="H [MW-s/MVA]"
+                                value={values.H}
+                                onChange={handleChange}
+                                margin="normal"
+                                type="number"
+                            />
+                        </Tooltip>
                     </Box>
-                    <Typography  variant="h5">System:</Typography>
+                    <Typography variant="h5">System:</Typography>
                     <Box sx={{ display: "flex", gap: "16px" }}>
-                        <TextField
-                            name="U2"
-                            label="U2"
-                            value={values.Ra}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
-                        <TextField
-                            name="thetaU2"
-                            label="θ"
-                            value={values.Xd}
-                            onChange={handleChange}
-                            margin="normal"
-                        />
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the U2 field</Typography>}>
+                            <TextField
+                                name="U2"
+                                label="U2 [pu]"
+                                value={values.U2}
+                                onChange={handleChange}
+                                margin="normal"
+                                type="number"
+                            />
+                        </Tooltip>
+                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the θ field</Typography>}>
+                            <TextField
+                                name="thetaU2"
+                                label="θ [deg]"
+                                value={values.thetaU2}
+                                onChange={handleChange}
+                                margin="normal"
+                                type="number"
+                            />
+                        </Tooltip>
                     </Box>
-                    <Plot values={values}></Plot>
+                    <Box sx={{ height: "650px" }}>
+                        <Plot values={values}></Plot>
+                    </Box>
                 </Box>
             </Grid>
         </Grid>
