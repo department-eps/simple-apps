@@ -32,7 +32,7 @@ function graph(roots) {
     }]
 
     let layout = {
-        title: "Power-Angle equation",
+        title: "Eigenvalues",
         width: 800,
         height: 600,
         xaxis: {
