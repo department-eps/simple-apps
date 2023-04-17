@@ -1,5 +1,6 @@
 import Plotly from 'react-plotly.js';
 import { abs, atan2, complex, cos, divide, pi, sin } from 'mathjs';
+import styles from './PowerAnglePlot.module.css'
 
 export default function Plot({ values }) {
     let Us = Number(values.Us);
@@ -33,6 +34,7 @@ export default function Plot({ values }) {
             P.push(p);
             Q.push(q);
         }
+        let config = { responsive: true }
         let data = [
             {
                 x: theta,
@@ -49,23 +51,23 @@ export default function Plot({ values }) {
         ];
         let layout = {
             title: "Power-Angle equation",
-            width: 800,
-            height: 600,
             xaxis: {
                 title: "Angle [deg]",
                 showgrid: true,
                 colorgrid: "yellow"
             },
             yaxis: {
-                title: "Power[pu]",
+                title: "Power [pu]",
                 showgrid: true,
                 colorgrid: "gray"
             },
         };
         return (
             <Plotly
-                data={data}
-                layout={layout}
+            data={data}
+            layout={layout}
+            config={config}
+            className={styles['plot']}
             />
         );
     }

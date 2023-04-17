@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TextField, Grid } from "@mui/material";
-import Plot from "./Plot";
+import { TextField, Grid, Container } from "@mui/material";
+import Plot from "./Plot/PowerAnglePlot";
 import { Box } from "@mui/system";
 
 export default function Inputs() {
@@ -21,21 +21,14 @@ export default function Inputs() {
   };
 
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{ justifyContent: "center", alignItems: "center" }}
-    >
-      <Grid item xs={12} sm={8} md={6} lg={4}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "16px",
-          }}
-        >
-          <Box sx={{ display: "flex", gap: "16px" }}>
+    <Container>
+      <Grid
+        container
+        spacing={2}
+        sx={{ justifyContent: "center", alignItems: "center" }}
+      >
+        <Grid item xs={12} sm={8} md={6} lg={3}>
+          <Box sx={{textAlign: "center"}}>
             <TextField
               name="Us"
               label="Us"
@@ -43,6 +36,10 @@ export default function Inputs() {
               onChange={handleChange}
               margin="normal"
             />
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={8} md={6} lg={3}>
+          <Box sx={{textAlign: "center"}}>
             <TextField
               name="Ur"
               label="Ur"
@@ -50,6 +47,10 @@ export default function Inputs() {
               onChange={handleChange}
               margin="normal"
             />
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={8} md={6} lg={3}>
+          <Box sx={{textAlign: "center"}}>
             <TextField
               name="X"
               label="X"
@@ -57,6 +58,10 @@ export default function Inputs() {
               onChange={handleChange}
               margin="normal"
             />
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={8} md={6} lg={3}>
+          <Box sx={{textAlign: "center"}}>
             <TextField
               name="R"
               label="R"
@@ -65,9 +70,13 @@ export default function Inputs() {
               margin="normal"
             />
           </Box>
-          <Plot {...plotData} values={values} />
-        </Box>
+        </Grid>
+        <Grid item xs={12} lg={8} md={8} sx={{textAlign: "center"}}>
+          <Box>
+            <Plot {...plotData} values={values} />
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </Container>
   );
 }
