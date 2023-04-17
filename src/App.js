@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from "./components/Footer";
-import Inputs from "./components/power-angle equation/Inputs";
+import Inputs from "./components/PowerAngle/PowerAngleInputs"
 import MenuAppBar from "./components/Navigation";
 import RotorAngle from './components/rotor-angle/Inputs';
 
