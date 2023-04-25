@@ -1,21 +1,18 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Footer from "./components/Footer";
-import Inputs from "./components/PowerAngle/PowerAngleInputs"
-import MenuAppBar from "./components/Navigation";
-import RotorAngle from './components/rotor-angle/Inputs';
+import { Routes, Route } from "react-router-dom";
+import PowerAngle from "./components/PowerAngle/Inputs/PowerAngleInputs";
+import Header from "./components/Header/Header";
+import RotorAngle from "./components/RotorAngle/RotorAngleInputs";
 
 function App() {
   return (
-    <div>
-      <MenuAppBar />
-      <Router basename="/simple-apps">
-        <Routes>
-          <Route path="/" element={<Inputs />} />
-          <Route path="/rotor-angle" element={<RotorAngle />} />
-        </Routes>
-      </Router>
-      <Footer />
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<PowerAngle />} />
+        <Route path='/rotor-angle' element = {<RotorAngle />} />
+      </Routes>
+    </>
   )
 }
+
 export default App;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { TextField, Grid, Typography, Tooltip } from "@mui/material";
+import { TextField, Grid, Typography, Tooltip, Container } from "@mui/material";
 import { Box } from "@mui/system";
-import Plot from "./PlotRotorAngle";
+import Plot from "./Plot/RotorAnglePlot";
 
 export default function RotorAngle() {
     const [values, setValues] = useState({
@@ -24,22 +24,17 @@ export default function RotorAngle() {
     };
 
     return (
-        <Grid
-            container
-            spacing={2}
-            sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-            <Grid item xs={12} sm={8} md={6} lg={4}>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "16px",
-                    }}
-                >
+        <Container sx={{ backgroundColor: 'white', paddingTop: '80px' }}>
+            <Grid
+                container
+                spacing={2}
+                sx={{ justifyContent: "center", alignItems: "center" }}
+            >
+                <Grid item xs={12} sx={{ textAlign: 'center' }}>
                     <Typography variant="h5">Generator:</Typography>
-                    <Box sx={{ display: "flex", gap: "16px" }}>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2}>
+                    <Box sx={{ textAlign: "center" }}>
                         <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the Ra field</Typography>}>
                             <TextField
                                 name="Ra"
@@ -50,6 +45,10 @@ export default function RotorAngle() {
                                 type="number"
                             />
                         </Tooltip>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2} >
+                    <Box sx={{ textAlign: "center" }}>
                         <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the Xd field</Typography>}>
                             <TextField
                                 name="Xd"
@@ -59,6 +58,10 @@ export default function RotorAngle() {
                                 margin="normal"
                             />
                         </Tooltip>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2}>
+                    <Box sx={{ textAlign: "center" }}>
                         <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the U1 field</Typography>}>
                             <TextField
                                 name="U1"
@@ -69,6 +72,10 @@ export default function RotorAngle() {
                                 type="number"
                             />
                         </Tooltip>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2}>
+                    <Box sx={{ textAlign: "center" }}>
                         <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the P1 field</Typography>}>
                             <TextField
                                 name="P1"
@@ -79,6 +86,10 @@ export default function RotorAngle() {
                                 type="number"
                             />
                         </Tooltip>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2}>
+                    <Box sx={{ textAlign: "center" }}>
                         <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the H field</Typography>}>
                             <TextField
                                 name="H"
@@ -90,34 +101,42 @@ export default function RotorAngle() {
                             />
                         </Tooltip>
                     </Box>
+                </Grid>
+
+                <Grid item xs={12} sx={{ textAlign: 'center' }}>
                     <Typography variant="h5">System:</Typography>
-                    <Box sx={{ display: "flex", gap: "16px" }}>
-                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the U2 field</Typography>}>
-                            <TextField
-                                name="U2"
-                                label="U2 [pu]"
-                                value={values.U2}
-                                onChange={handleChange}
-                                margin="normal"
-                                type="number"
-                            />
-                        </Tooltip>
-                        <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the θ field</Typography>}>
-                            <TextField
-                                name="thetaU2"
-                                label="θ [deg]"
-                                value={values.thetaU2}
-                                onChange={handleChange}
-                                margin="normal"
-                                type="number"
-                            />
-                        </Tooltip>
-                    </Box>
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={6} lg={3} sx={{ textAlign: 'center' }}>
+                    <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the U2 field</Typography>}>
+                        <TextField
+                            name="U2"
+                            label="U2 [pu]"
+                            value={values.U2}
+                            onChange={handleChange}
+                            margin="normal"
+                            type="number"
+                        />
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={3} sx={{ textAlign: 'center' }}>
+                    <Tooltip arrow title={<Typography sx={{ fontSize: 14 }}>This is the θ field</Typography>}>
+                        <TextField
+                            name="thetaU2"
+                            label="θ [deg]"
+                            value={values.thetaU2}
+                            onChange={handleChange}
+                            margin="normal"
+                            type="number"
+                        />
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={12} lg={8} md={8} sx={{ textAlign: "center" }}>
                     <Box sx={{ height: "650px" }}>
                         <Plot values={values}></Plot>
                     </Box>
-                </Box>
+                </Grid>
             </Grid>
-        </Grid>
+        </Container>
     );
-}
+};

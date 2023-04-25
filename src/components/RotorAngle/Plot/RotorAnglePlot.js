@@ -1,10 +1,11 @@
 import { complex } from "mathjs";
 import Plotly from 'react-plotly.js';
-import { calculate, convert } from "../../utils/utils";
+import { calculate, convert } from "../../../utils/rotorAngleUtil";
 
 const Z = complex(0.05, 0.5);
 export default function Plot({ values }) {
     const convertedValues = {};
+    
     Object.entries(values).forEach(([key, value]) => {
         convertedValues[key] = Number(value);
     });
