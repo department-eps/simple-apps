@@ -1,8 +1,10 @@
 import { complex } from "mathjs";
 import Plotly from 'react-plotly.js';
 import { calculate, convert } from "../../../utils/rotorAngleUtil";
+import styles from "./RotorAnglePlot.module.css";
 
 const Z = complex(0.05, 0.5);
+
 export default function Plot({ values }) {
     const convertedValues = {};
     
@@ -12,11 +14,11 @@ export default function Plot({ values }) {
 
     const { Ra, Xd, U1, P1, H, U2, thetaU2 } = ({ ...convertedValues });
     const data = getData(Ra, Xd, U1, P1, H, U2, thetaU2);
-    return graph(data)
+    return graph(data);
 };
 
 function graph(roots) {
-    debugger;
+    let config = { responsive: true };
     let data = [{
         x: [roots.root1.re],
         y: [roots.root1.im],
@@ -30,12 +32,10 @@ function graph(roots) {
         mode: 'markers',
         type: 'scatter',
         name: 'λ2'
-    }]
+    }];
 
     let layout = {
         title: "Eigenvalues",
-        width: 800,
-        height: 600,
         xaxis: {
             title: "Real [Np/s]",
             showgrid: true,
@@ -51,9 +51,11 @@ function graph(roots) {
         <Plotly
             data={data}
             layout={layout}
+            config={config}
+            className={styles['plot']}
         />
-    )
-}
+    );
+};
 
 
 function getData(Ra, Xd, U1, P1, H, U2, thetaU2) {
