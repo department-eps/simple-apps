@@ -36,7 +36,8 @@ export default function RotorAngle() {
                                 }}
                                 value={formValues.Ra}
                                 onChange={onChange}
-                                type="number"
+                                type="text"
+                                autoComplete='off'
                             />
                         </Tooltip>
                     </Box>
@@ -53,6 +54,8 @@ export default function RotorAngle() {
                                 }}
                                 value={formValues.Xd}
                                 onChange={onChange}
+                                type="text"
+                                autoComplete='off'
                             />
                         </Tooltip>
                     </Box>
@@ -69,7 +72,8 @@ export default function RotorAngle() {
                                 }}
                                 value={formValues.U1}
                                 onChange={onChange}
-                                type="number"
+                                type="text"
+                                autoComplete='off'
                             />
                         </Tooltip>
                     </Box>
@@ -86,7 +90,8 @@ export default function RotorAngle() {
                                 }}
                                 value={formValues.P1}
                                 onChange={onChange}
-                                type="number"
+                                type="text"
+                                autoComplete='off'
                             />
                         </Tooltip>
                     </Box>
@@ -103,7 +108,8 @@ export default function RotorAngle() {
                                 }}
                                 value={formValues.H}
                                 onChange={onChange}
-                                type="number"
+                                type="text"
+                                autoComplete='off'
                             />
                         </Tooltip>
                     </Box>
@@ -124,7 +130,8 @@ export default function RotorAngle() {
                             }}
                             value={formValues.U2}
                             onChange={onChange}
-                            type="number"
+                            type="text"
+                            autoComplete='off'
                         />
                     </Tooltip>
                 </Grid>
@@ -139,7 +146,8 @@ export default function RotorAngle() {
                             }}
                             value={formValues.thetaU2}
                             onChange={onChange}
-                            type="number"
+                            type="text"
+                            autoComplete='off'
                         />
                     </Tooltip>
                 </Grid>
