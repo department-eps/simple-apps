@@ -15,11 +15,11 @@ export default function Plot({ values }) {
             theta.push(i);
         }
         return theta;
-    }
+    };
 
     function toRad(ang) {
         return ang / 180 * pi;
-    }
+    };
 
     function graph(Us, Ur, R, X) {
         let P = [];
@@ -29,11 +29,10 @@ export default function Plot({ values }) {
             let tempUs = complex(Us * cos(toRad(ang)), Us * sin(toRad(ang)));
             let tempUr = complex(Ur, 0);
             let tempZ = complex(R, X);
-            debugger;
             let [p, q] = powerAngle(tempUs, tempUr, tempZ);
             P.push(p);
             Q.push(q);
-        }
+        };
         let config = { responsive: true }
         let data = [
             {
@@ -70,9 +69,8 @@ export default function Plot({ values }) {
             className={styles['plot']}
             />
         );
-    }
+    };
     function powerAngle(Us, Ur, Z) {
-        debugger;
         let Y = divide(1, Z);
         let alpha = pi / 2 + atan2(Y.im, Y.re);
         let angs = atan2(Us.im, Us.re);
@@ -81,5 +79,5 @@ export default function Plot({ values }) {
         let P = abs(Us) ** 2 * abs(Y) * sin(alpha) + abs(Us) * abs(Ur) * abs(Y) * sin(angs - angr - alpha);
         let Q = abs(Us) ** 2 * abs(Y) * cos(alpha) - abs(Us) * abs(Ur) * abs(Y) * cos(angs - angr - alpha);
         return [P, Q];
-    }
-}
+    };
+};

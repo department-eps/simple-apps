@@ -31,6 +31,7 @@ export default function PowerAngle() {
                                 }}
                                 value={formValues.Us}
                                 onChange={onChange}
+                                type="text"
                                 autoComplete='off'
                             />
                         </Box>
@@ -48,6 +49,7 @@ export default function PowerAngle() {
                                 }}
                                 value={formValues.Ur}
                                 onChange={onChange}
+                                type="text"
                                 autoComplete='off'
                             />
                         </Tooltip>
@@ -65,6 +67,7 @@ export default function PowerAngle() {
                                 }}
                                 value={formValues.X}
                                 onChange={onChange}
+                                type="text"
                                 autoComplete='off'
                             />
                         </Tooltip>
@@ -82,6 +85,7 @@ export default function PowerAngle() {
                                 }}
                                 value={formValues.R}
                                 onChange={onChange}
+                                type="text"
                                 autoComplete='off'
                             />
                         </Tooltip>
