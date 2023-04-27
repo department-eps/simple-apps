@@ -1,50 +1,65 @@
-import { complex } from "mathjs";
 import Plotly from 'react-plotly.js';
-import { calculate, convert } from "../../../utils/rotorAngleUtil";
 import styles from "./RotorAnglePlot.module.css";
+import { calculateRotorAngle } from './calculate';
 
-const Z = complex(0.05, 0.5);
 
 export default function Plot({ values }) {
+    const result = {
+        root1: {
+            real: [],
+            imaginary: []
+        },
+        root2: {
+            real: [],
+            imaginary: []
+        }
+    };
     const convertedValues = {};
-    
+
     Object.entries(values).forEach(([key, value]) => {
         convertedValues[key] = Number(value);
     });
 
-    const { Ra, Xd, U1, P1, H, U2, thetaU2 } = ({ ...convertedValues });
-    const data = getData(Ra, Xd, U1, P1, H, U2, thetaU2);
-    return graph(data);
+    const { Ra, Xd, U1, P1start, step, P1end, H, U2, thetaU2 } = ({ ...convertedValues });
+    for (let i = P1start; i >= P1end; i -= step) {
+        const data = (calculateRotorAngle(Ra, Xd, U1, i, H, U2, thetaU2));
+        result.root1.real.push(data.root1.re);
+        result.root1.imaginary.push(data.root1.im);
+        result.root2.real.push(data.root2.re);
+        result.root2.imaginary.push(data.root2.im);
+    };
+    return graph(result)
 };
 
 function graph(roots) {
     let config = { responsive: true };
     let data = [{
-        x: [roots.root1.re],
-        y: [roots.root1.im],
+        x: roots.root1.real,
+        y: roots.root1.imaginary,
         mode: 'markers',
         type: 'scatter',
         name: 'λ1'
     },
     {
-        x: [roots.root2.re],
-        y: [roots.root2.im],
+        x: roots.root2.real,
+        y: roots.root2.imaginary,
         mode: 'markers',
         type: 'scatter',
         name: 'λ2'
     }];
 
     let layout = {
+        autosize: false,
         title: "Eigenvalues",
         xaxis: {
             title: "Real [Np/s]",
             showgrid: true,
-            colorgrid: "yellow"
+            rangemode: 'tozero',
         },
         yaxis: {
             title: "Imag [rad/s]",
             showgrid: true,
-            colorgrid: "gray"
+            rangemode: 'tozero'
         },
     };
     return (
@@ -55,42 +70,4 @@ function graph(roots) {
             className={styles['plot']}
         />
     );
-};
-
-
-function getData(Ra, Xd, U1, P1, H, U2, thetaU2) {
-    // angular frequency for 50hz
-    const omega0 = calculate.omega0();
-    // own and mutual conductivites
-    const Y = calculate.Y(Z);
-    const y = convert.toPolarUnit(Y);
-    const alpha = convert.toDegree(calculate.alpha(Y));
-    // voltage angle and reactive generator power
-    const theta = calculate.theta(P1, U1, alpha, U2, y);
-    const Q1 = calculate.Q1(U1, y, alpha, U2, theta);
-    // voltage in the terminal
-    const Ug0 = calculate.Ug0(U1, theta);
-    const { re: Ur0, im: Ui0 } = { ...Ug0 };
-    // current in the terminal
-    const Ig0 = calculate.Ig0(P1, Q1, Ug0);
-    const { re: Ir0, im: Ii0 } = { ...Ig0 };
-    // generator mode established
-    const delta0 = convert.toDegree(calculate.delta0(Ug0, Ra, Xd, Ig0));
-    const Id0 = calculate.Id0(Ir0, delta0, Ii0);
-    const Iq0 = calculate.Iq0(Ir0, delta0, Ii0);
-    // voltage transformation
-    const Ud0 = calculate.Ud0(Ur0, delta0, Ui0);
-    const Uq0 = calculate.Uq0(Ur0, delta0, Ui0);
-    const Eq0 = calculate.Eq0(Uq0, Ra, Iq0, Xd, Id0);
-    const psid0 = calculate.psid0(Eq0, Xd, Id0);
-    const psiq0 = calculate.psiq0(Xd, Iq0);
-    const Te0 = calculate.Te0(psid0, Iq0, psiq0, Id0);
-    // state-space linearization and composition of the model
-    const Ks = calculate.Ks(Eq0, U2, y, delta0, alpha);
-    const Kd = Te0;
-    // polynome roots
-    const roots = calculate.rootsOfPolynome(Kd, H, Ks, omega0);
-    // decrement
-    const ksi = calculate.ksi(roots.root1);
-    return roots
 };

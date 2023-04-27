@@ -8,7 +8,9 @@ export default function RotorAngle() {
         Ra: "0.004",
         Xd: "0.3",
         U1: "1",
-        P1: "0.5",
+        P1start: "0.5",
+        step: "0.1",
+        P1end: "0.2",
         H: "3.5",
         U2: "1",
         thetaU2: "0"
@@ -30,7 +32,7 @@ export default function RotorAngle() {
                             <TextField
                                 className={styles['input-field']}
                                 name="Ra"
-                                label={<span className={styles['input-label']}>Ra</span>}
+                                label={<span className={styles['input-label']}>R<small>a</small></span>}
                                 InputProps={{
                                     endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                                 }}
@@ -48,7 +50,7 @@ export default function RotorAngle() {
                             <TextField
                                 className={styles['input-field']}
                                 name="Xd"
-                                label={<span className={styles['input-label']}>Xd</span>}
+                                label={<span className={styles['input-label']}>X<small>d</small></span>}
                                 InputProps={{
                                     endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                                 }}
@@ -66,7 +68,7 @@ export default function RotorAngle() {
                             <TextField
                                 className={styles['input-field']}
                                 name="U1"
-                                label={<span className={styles['input-label']}>U1</span>}
+                                label={<span className={styles['input-label']}>U<small>1</small></span>}
                                 InputProps={{
                                     endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                                 }}
@@ -83,12 +85,45 @@ export default function RotorAngle() {
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the P1 field</Typography>}>
                             <TextField
                                 className={styles['input-field']}
-                                name="P1"
-                                label={<span className={styles['input-label']}>P1</span>}
+                                name="P1start"
+                                label={<span className={styles['input-label']}>P<small>1s</small></span>}
                                 InputProps={{
                                     endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                                 }}
-                                value={formValues.P1}
+                                value={formValues.P1start}
+                                onChange={onChange}
+                                type="text"
+                                autoComplete='off'
+                            />
+                        </Tooltip>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2}>
+                    <Box className={styles['item']}>
+                        <Tooltip arrow title={<Typography variant="subtitle2">This is the P1 field</Typography>}>
+                            <TextField
+                                className={styles['input-field']}
+                                name='step'
+                                label={<span className={styles['input-label']}>step</span>}
+                                value={formValues.step}
+                                onChange={onChange}
+                                type="text"
+                                autoComplete='off'
+                            />
+                        </Tooltip>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={2}>
+                    <Box className={styles['item']}>
+                        <Tooltip arrow title={<Typography variant="subtitle2">This is the P1 field</Typography>}>
+                            <TextField
+                                className={styles['input-field']}
+                                name="P1end"
+                                label={<span className={styles['input-label']}>P<small>1e</small></span>}
+                                InputProps={{
+                                    endAdornment: <InputAdornment position="end">pu</InputAdornment>,
+                                }}
+                                value={formValues.P1end}
                                 onChange={onChange}
                                 type="text"
                                 autoComplete='off'
