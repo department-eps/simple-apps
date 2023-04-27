@@ -11,11 +11,8 @@
     padding-left: 5px;
 }
 .input-field {
-    width: 150px;
+    width: 200px;
 }
 .item {
     text-align: center;
-}
-.plot {
-    height: 650px;
 }

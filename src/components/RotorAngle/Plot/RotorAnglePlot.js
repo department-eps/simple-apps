@@ -1,9 +1,9 @@
-import Plotly from 'react-plotly.js';
-import styles from "./RotorAnglePlot.module.css";
+import React from 'react';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Legend, LabelList, Label } from 'recharts';
 import { calculateRotorAngle } from './calculate';
 
-
 export default function Plot({ values }) {
+    const mode = ['A', 'B', 'C', 'D', 'E']
     const result = {
         root1: {
             real: [],
@@ -20,54 +20,50 @@ export default function Plot({ values }) {
         convertedValues[key] = Number(value);
     });
 
-    const { Ra, Xd, U1, P1start, step, P1end, H, U2, thetaU2 } = ({ ...convertedValues });
+    const { Ra, Xd, U1, P1start, step, P1end, H, U2, thetaU2 } = { ...convertedValues };
     for (let i = P1start; i >= P1end; i -= step) {
-        const data = (calculateRotorAngle(Ra, Xd, U1, i, H, U2, thetaU2));
+        const data = calculateRotorAngle(Ra, Xd, U1, i, H, U2, thetaU2);
         result.root1.real.push(data.root1.re);
         result.root1.imaginary.push(data.root1.im);
         result.root2.real.push(data.root2.re);
         result.root2.imaginary.push(data.root2.im);
-    };
-    return graph(result)
-};
+    }
 
-function graph(roots) {
-    let config = { responsive: true };
-    let data = [{
-        x: roots.root1.real,
-        y: roots.root1.imaginary,
-        mode: 'markers',
-        type: 'scatter',
-        name: 'λ1'
-    },
-    {
-        x: roots.root2.real,
-        y: roots.root2.imaginary,
-        mode: 'markers',
-        type: 'scatter',
-        name: 'λ2'
-    }];
+    const scatterData1 = result.root1.real.map((value, index) => ({ x: value, y: result.root1.imaginary[index], name: mode[index] }));
+    const scatterData2 = result.root2.real.map((value, index) => ({ x: value, y: result.root2.imaginary[index], name: mode[index] }));
 
-    let layout = {
-        autosize: false,
-        title: "Eigenvalues",
-        xaxis: {
-            title: "Real [Np/s]",
-            showgrid: true,
-            rangemode: 'tozero',
-        },
-        yaxis: {
-            title: "Imag [rad/s]",
-            showgrid: true,
-            rangemode: 'tozero'
-        },
-    };
     return (
-        <Plotly
-            data={data}
-            layout={layout}
-            config={config}
-            className={styles['plot']}
-        />
+        <ResponsiveContainer width="100%" height={400}>
+            <ScatterChart>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                    type="number"
+                    dataKey="x"
+                    name="Real [Np/s]"
+                    domain={['auto', 'auto']}
+                    height={45}
+                >
+                    <Label value='Real α [Np/s]' position='insideBottom' style={{ textAnchor: 'middle', }} />
+                </XAxis>
+                <YAxis
+                    type="number"
+                    dataKey="y"
+                    name="Imag [rad/s]"
+                    orientation='right'
+                    domain={['auto', 'auto']}
+                >
+                    <Label angle={-90} value='Imag ω [rad/s]' position='outsideLeft' style={{ textAnchor: 'middle' }} />
+                </YAxis>
+                <Tooltip />
+                <Legend />
+                <ReferenceLine y={0} stroke="#000" />
+                <Scatter name="λ1" data={scatterData1} fill="#8884d8">
+                    <LabelList dataKey="name" position={'bottom'} />
+                </Scatter>
+                <Scatter name="λ2" data={scatterData2} fill="#82ca9d">
+                    <LabelList dataKey="name" position={'top'} />
+                </Scatter>
+            </ScatterChart>
+        </ResponsiveContainer>
     );
 };

@@ -8,7 +8,7 @@ export default function RotorAngle() {
         Ra: "0.004",
         Xd: "0.3",
         U1: "1",
-        P1start: "0.5",
+        P1start: "0.6",
         step: "0.1",
         P1end: "0.2",
         H: "3.5",
@@ -17,7 +17,7 @@ export default function RotorAngle() {
     });
 
     return (
-        <Container className={styles['container']}>
+        <Container maxWidth={'md'} className={styles['container']}>
             <Grid
                 container
                 spacing={2}
@@ -26,7 +26,7 @@ export default function RotorAngle() {
                 <Grid item xs={12} className={styles['item']}>
                     <Typography variant="h5">Generator:</Typography>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2}>
+                <Grid item xs={12} sm={12} md={6} lg={3}>
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the Ra field</Typography>}>
                             <TextField
@@ -44,7 +44,7 @@ export default function RotorAngle() {
                         </Tooltip>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2} >
+                <Grid item xs={12} sm={12} md={6} lg={3} >
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the Xd field</Typography>}>
                             <TextField
@@ -62,7 +62,7 @@ export default function RotorAngle() {
                         </Tooltip>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2}>
+                <Grid item xs={12} sm={12} md={6} lg={3}>
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the U1 field</Typography>}>
                             <TextField
@@ -80,7 +80,7 @@ export default function RotorAngle() {
                         </Tooltip>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2}>
+                <Grid item xs={12} sm={12} md={6} lg={3}>
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the P1 field</Typography>}>
                             <TextField
@@ -98,7 +98,7 @@ export default function RotorAngle() {
                         </Tooltip>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2}>
+                <Grid item xs={12} sm={12} md={6} lg={3}>
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the P1 field</Typography>}>
                             <TextField
@@ -113,7 +113,7 @@ export default function RotorAngle() {
                         </Tooltip>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2}>
+                <Grid item xs={12} sm={12} md={6} lg={3}>
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the P1 field</Typography>}>
                             <TextField
@@ -131,7 +131,7 @@ export default function RotorAngle() {
                         </Tooltip>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2}>
+                <Grid item xs={12} sm={12} md={6} lg={3}>
                     <Box className={styles['item']}>
                         <Tooltip arrow title={<Typography variant="subtitle2">This is the H field</Typography>}>
                             <TextField
@@ -154,12 +154,12 @@ export default function RotorAngle() {
                     <Typography variant="h5">System:</Typography>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={6} lg={2} className={styles['item']}>
+                <Grid item xs={12} sm={12} md={6} lg={3} className={styles['item']}>
                     <Tooltip arrow title={<Typography variant="subtitle2">This is the U2 field</Typography>}>
                         <TextField
                             className={styles['input-field']}
                             name="U2"
-                            label={<span className={styles['input-label']}>U2</span>}
+                            label={<span className={styles['input-label']}>U<small>2</small></span>}
                             InputProps={{
                                 endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                             }}
@@ -170,7 +170,7 @@ export default function RotorAngle() {
                         />
                     </Tooltip>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} lg={2} className={styles['item']}>
+                <Grid item xs={12} sm={12} md={6} lg={3} className={styles['item']}>
                     <Tooltip arrow title={<Typography variant="subtitle2">This is the θ field</Typography>}>
                         <TextField
                             className={styles['input-field']}
@@ -186,8 +186,9 @@ export default function RotorAngle() {
                         />
                     </Tooltip>
                 </Grid>
-                <Grid item xs={12} lg={9} md={9} className={styles['item']}>
-                    <Box className={styles['plot']}>
+                <Grid item xs={12} sm={12} lg={9} md={9} className={styles['item']}>
+                    <Box sx={{paddingTop: '10px'}}>
+                        <Typography variant="h5">Eigenvalues</Typography>
                         <Plot values={formValues}></Plot>
                     </Box>
                 </Grid>
