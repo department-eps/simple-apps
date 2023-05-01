@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import PowerAngle from "./components/PowerAngle/Inputs/PowerAngleInputs";
 import Header from "./components/Header/Header";
 import RotorAngle from "./components/RotorAngle/Inputs/RotorAngleInputs";
+import Kirchhoff from "./components/KirchhoffPowerDistribution/Kirchhoff";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PowerAngle />} />
         <Route path='/rotor-angle' element = {<RotorAngle />} />
+        <Route path='/kirchhoff' element = {<Kirchhoff />}></Route>
       </Routes>
     </>
   )
