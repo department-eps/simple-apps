@@ -3,6 +3,7 @@ import PowerAngle from "./components/PowerAngle/Inputs/PowerAngleInputs";
 import Header from "./components/Header/Header";
 import RotorAngle from "./components/RotorAngle/Inputs/RotorAngleInputs";
 import Kirchhoff from "./components/Kirchhoff/Kirchhoff";
+import TransformerLosses from "./components/TransformerLosses/TransformerLosses";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path="/" element={<PowerAngle />} />
         <Route path='/rotor-angle' element = {<RotorAngle />} />
         <Route path='/kirchhoff' element = {<Kirchhoff />}></Route>
+        <Route path='/transformer-losses' element = {<TransformerLosses />}></Route>
+
       </Routes>
     </>
   )
