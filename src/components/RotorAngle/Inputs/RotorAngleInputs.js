@@ -2,8 +2,8 @@ import { TextField, Grid, Typography, Tooltip, Container, Box, InputAdornment } 
 import styles from "./RotorAngleInputs.module.css"
 import Plot from "../Plot/RotorAnglePlot";
 import { useForm } from "../../../hooks/useForm";
-
 export default function RotorAngle() {
+    const labelFormat = (text) => <span className={styles['input-label']}>{text}</span>;
     const { formValues, onChange } = useForm({
         Ra: "0.004",
         Xd: "0.3",
@@ -32,7 +32,7 @@ export default function RotorAngle() {
                             <TextField
                                 className={styles['input-field']}
                                 name="Ra"
-                                label={<span className={styles['input-label']}>R<small>a</small></span>}
+                                label={labelFormat("R\u2090")}
                                 InputProps={{
                                     endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                                 }}
@@ -187,8 +187,8 @@ export default function RotorAngle() {
                     </Tooltip>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={9} md={9} className={styles['item']}>
-                    <Box sx={{paddingTop: '10px'}}>
-                        <Typography variant="h5">Eigenvalues</Typography>
+                    <Box sx={{ paddingTop: '10px' }}>
+                        <Typography variant="h5">Собствени стойности</Typography>
                         <Plot values={formValues}></Plot>
                     </Box>
                 </Grid>

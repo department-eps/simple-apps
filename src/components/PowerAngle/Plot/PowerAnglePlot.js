@@ -50,6 +50,7 @@ export default function Plot({ values }) {
         ];
         let layout = {
             title: "Power-Angle equation",
+            autosize: true,
             xaxis: {
                 title: "Angle [deg]",
                 showgrid: true,
