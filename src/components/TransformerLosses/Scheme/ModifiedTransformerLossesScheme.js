@@ -7,7 +7,7 @@ export default function ModifiedTransformerLossesScheme() {
             <TransformerLossesScheme />
             <foreignObject x="353" y="28" width="250px" height="40">
                 <div xmlns="http://www.w3.org/1999/xhtml">
-                    <Typography sx={{ fontSize: '20pt' }}>loading = 2.1 %</Typography>
+                    <Typography sx={{ fontSize: '20pt' }}>loading = 100 %</Typography>
                 </div>
             </foreignObject>
             <foreignObject x="180" y="25" width="250px" height="40">

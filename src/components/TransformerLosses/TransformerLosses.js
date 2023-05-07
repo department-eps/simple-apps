@@ -1,13 +1,14 @@
 import { Container, Grid } from '@mui/material';
-import ModifiedTransformerLossesScheme from './ModifiedTransformerLossesScheme';
-import Sliders from './Sliders';
-import RadioButtons from './RadioButtons';
+import ModifiedTransformerLossesScheme from './Scheme/ModifiedTransformerLossesScheme';
+import Sliders from './Inputs/Sliders';
+import RadioButtons from './Inputs/RadioButtons';
 import { useState } from 'react';
-import TransformerLossesChart from './Plot';
+import TransformerLossesChart from './Charts/Chart';
 
 export default function TransformerLosses() {
     const [value, setValue] = useState('all');
-    const [losses, setLosses] = useState([])
+    const [losses, setLosses] = useState([]);
+
     return (
         <Container maxWidth={'md'} sx={{ paddingTop: '90px' }}>
             <Grid container spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>

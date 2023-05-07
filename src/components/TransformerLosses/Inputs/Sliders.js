@@ -1,8 +1,8 @@
 import { Slider, Box, Typography } from "@mui/material"
 import React, { useEffect } from "react";
-import { S1options, U1options, cosphioptions } from "../../utils/constants";
-import { useForm } from "../../hooks/useForm";
-import calculateTransformerLosses from "./calculate";
+import { S1options, U1options, cosphioptions } from "../../../utils/constants";
+import { useForm } from "../../../hooks/useForm";
+import calculateTransformerLosses from "../calculate/calculate";
 
 export default function Sliders({ value, setLosses }) {
     const { formValues, onChange } = useForm({
