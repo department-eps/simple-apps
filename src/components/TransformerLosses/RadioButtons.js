@@ -1,8 +1,6 @@
 import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from "@mui/material"
-import { useState } from "react";
 
-export default function RadioButtons() {
-    const [value, setValue] = useState('all');
+export default function RadioButtons({setValue, value}) {
 
     const handleChange = (e) => {
         setValue(e.target.value);
