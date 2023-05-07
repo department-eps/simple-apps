@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Legend, LabelList, Label } from 'recharts';
 import { calculateRotorAngle } from './calculate';
-
+import styles from './RotorAnglePlot.module.css'
 export default function Plot({ values }) {
     const mode = ['A', 'B', 'C', 'D', 'E']
     const result = {
@@ -34,7 +34,7 @@ export default function Plot({ values }) {
 
     return (
         <ResponsiveContainer width="100%" height={400}>
-            <ScatterChart>
+            <ScatterChart className={styles['recharts-wrapper']}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     type="number"
