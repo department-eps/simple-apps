@@ -1,0 +1,12 @@
+.slider {
+    width: 200px;
+}
+
+.slider :global .MuiSlider-valueLabel {
+    top: 3px;
+    transform: rotate(180deg);
+}
+
+.slider :global .MuiSlider-valueLabel>span {
+    transform: rotate(180deg);
+}

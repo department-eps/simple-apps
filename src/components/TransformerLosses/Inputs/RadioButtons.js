@@ -12,10 +12,10 @@ export default function RadioButtons() {
                 value={radioValue}
                 onChange={handleRadioChange}
             >
-                <FormControlLabel value="all" control={<Radio />} label="всички" />
+                <FormControlLabel value="all" control={<Radio />} label="Всички" />
                 <FormControlLabel value="U1" control={<Radio />} label="Захр.напр. U1" />
                 <FormControlLabel value="S1" control={<Radio />} label="Пълна мощ. S1" />
-                <FormControlLabel value="cosphi" control={<Radio />} label="фактор на мощ." />
+                <FormControlLabel value="cosphi" control={<Radio />} label="Фактор на мощ." />
             </RadioGroup>
         </FormControl>
     );
