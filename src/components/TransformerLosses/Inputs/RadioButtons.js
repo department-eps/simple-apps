@@ -1,9 +1,10 @@
 import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from "@mui/material"
 
-export default function RadioButtons({setValue, value}) {
+export default function RadioButtons({setValue, value, setHasRun}) {
 
     const handleChange = (e) => {
         setValue(e.target.value);
+        setHasRun(false)
     };
 
     return (

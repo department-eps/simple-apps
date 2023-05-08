@@ -1,16 +1,9 @@
-import { useState } from "react";
-import { ResponsiveContainer, LineChart, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Line, Dot } from "recharts";
+import { useMemo } from "react";
+import { ResponsiveContainer, LineChart, XAxis, YAxis, Legend, CartesianGrid, Line, Dot } from "recharts";
+
 
 export default function TransformerLossesChart({ losses, baseDot }) {
-    // const xTicks = [18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22];
-    // const xTickFormatter = (value) => {
-    //     if (value % 4 === 0) {
-    //         return value;
-    //     }
-    //     return '';
-    // };
-
-    const renderDot = (props) => {
+    const renderDot = useMemo(() => (props) => {
         const { cx, cy, payload } = props;
         if (payload.x === baseDot) {
             return (
@@ -18,7 +11,7 @@ export default function TransformerLossesChart({ losses, baseDot }) {
             );
         }
         return null;
-    };
+    }, [baseDot]);
 
     return (
         <ResponsiveContainer width={"100%"} height={300}>
