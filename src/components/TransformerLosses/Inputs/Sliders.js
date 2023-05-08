@@ -4,7 +4,7 @@ import { S1options, U1options, cosphioptions } from "../../../utils/constants";
 import { useForm } from "../../../hooks/useForm";
 import calculateTransformerLosses from "../calculate/calculate";
 
-export default function Sliders({ value, setLosses }) {
+export default function Sliders({ value, setLosses, setBaseDot }) {
     const { formValues, onChange } = useForm({
         U1: Number(20),
         S1: Number(1000),
@@ -18,24 +18,44 @@ export default function Sliders({ value, setLosses }) {
             setLosses(calculateTransformerLosses(formValues.U1, formValues.S1, formValues.cosphi))
         }
         if (value === "U1") {
+            setBaseDot(formValues.U1)
             for (let i = 18; i < 22; i += 0.04) {
-                const calculatedLosses = calculateTransformerLosses(i, 850, 0.92)
+                const calculatedLosses = calculateTransformerLosses(i, formValues.S1, formValues.cosphi)
                 data.push({
                     x: Number(i.toFixed(2)),
                     Pidle: calculatedLosses.Pidle / 1000,
                     Psc: calculatedLosses.Psc / 1000,
-                    Pall: (calculatedLosses.Psc + calculatedLosses.Pidle)/1000
+                    Pall: (calculatedLosses.Psc + calculatedLosses.Pidle) / 1000
                 });
             };
-            setLosses(data)
         }
         if (value === "S1") {
-            setLosses(calculateTransformerLosses(20, formValues.S1, 1))
+            setBaseDot(formValues.S1)
+            for (let i = 10; i <= 1000; i += 10) {
+                const calculatedLosses = calculateTransformerLosses(formValues.U1, i, formValues.cosphi)
+                data.push({
+                    x: Number(i.toFixed(2)),
+                    Pidle: calculatedLosses.Pidle / 1000,
+                    Psc: calculatedLosses.Psc / 1000,
+                    Pall: (calculatedLosses.Psc + calculatedLosses.Pidle) / 1000
+                });
+            };
         }
         if (value === "cosphi") {
-            setLosses(calculateTransformerLosses(20, 1000, formValues.cosphi))
+            setBaseDot(formValues.cosphi)
+            for (let i = 0.01; i <= 1; i += 0.01) {
+                const calculatedLosses = calculateTransformerLosses(formValues.U1, formValues.S1, i)
+                data.push({
+                    x: Number(i.toFixed(2)),
+                    Pidle: calculatedLosses.Pidle / 1000,
+                    Psc: calculatedLosses.Psc / 1000,
+                    Pall: (calculatedLosses.Psc + calculatedLosses.Pidle) / 1000
+                });
+            };
         }
+        setLosses(data)
     }, [formValues, value]);
+
     return (
         <Box>
             <Typography variant='h5'>U1 [kV]</Typography>
@@ -48,7 +68,7 @@ export default function Sliders({ value, setLosses }) {
                     min={18}
                     max={22}
                     marks={U1options}
-                    step={0.05}
+                    step={0.04}
                     disabled={value === 'U1' || value === 'all' ? false : true}
                     sx={{ width: '200px' }}
                 />
@@ -63,7 +83,7 @@ export default function Sliders({ value, setLosses }) {
                     min={0}
                     max={1000}
                     marks={S1options}
-                    step={1}
+                    step={10}
                     disabled={value === 'S1' || value === 'all' ? false : true}
                     sx={{ width: '200px' }}
                 />

@@ -14,7 +14,6 @@ export default function calculateTransformerLosses(U1, S1, cosphi) {
     const Qidle = Sidle.im;
     const Psc = losses_short_circuit_S.re;
     const Qsc = losses_short_circuit_S.im;
-    console.log(losses_short_circuit_S)
     return {Pidle, Qidle, Psc, Qsc};
 };
 
