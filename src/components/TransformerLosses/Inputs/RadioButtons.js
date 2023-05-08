@@ -1,18 +1,16 @@
 import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from "@mui/material"
+import { useContext } from "react";
+import { TransformerLossesContext } from "../../../contexts/TransformerLossesContext";
 
-export default function RadioButtons({setValue, value, setHasRun}) {
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-        setHasRun(false)
-    };
+export default function RadioButtons() {
+    const {handleRadioChange, radioValue} = useContext(TransformerLossesContext)
 
     return (
         <FormControl>
             <FormLabel>Влияние на:</FormLabel>
             <RadioGroup
-                value={value}
-                onChange={handleChange}
+                value={radioValue}
+                onChange={handleRadioChange}
             >
                 <FormControlLabel value="all" control={<Radio />} label="всички" />
                 <FormControlLabel value="U1" control={<Radio />} label="Захр.напр. U1" />

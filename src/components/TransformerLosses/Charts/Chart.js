@@ -1,17 +1,10 @@
-import { useMemo } from "react";
-import { ResponsiveContainer, LineChart, XAxis, YAxis, Legend, CartesianGrid, Line, Dot } from "recharts";
+import { useContext } from "react";
+import { ResponsiveContainer, LineChart, XAxis, YAxis, Legend, CartesianGrid, Line } from "recharts";
+import { TransformerLossesContext } from "../../../contexts/TransformerLossesContext";
 
 
-export default function TransformerLossesChart({ losses, baseDot }) {
-    const renderDot = useMemo(() => (props) => {
-        const { cx, cy, payload } = props;
-        if (payload.x === baseDot) {
-            return (
-                <Dot cx={cx} cy={cy} r={4} stroke="blue" fill="blue" strokeWidth={2} />
-            );
-        }
-        return null;
-    }, [baseDot]);
+export default function TransformerLossesChart() {
+    const {losses, renderDot} = useContext(TransformerLossesContext)
 
     return (
         <ResponsiveContainer width={"100%"} height={300}>

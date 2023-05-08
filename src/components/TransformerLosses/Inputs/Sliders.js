@@ -1,10 +1,12 @@
 import { Slider, Box, Typography } from "@mui/material"
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { S1options, U1options, cosphioptions } from "../../../utils/constants";
 import { useForm } from "../../../hooks/useForm";
 import calculateTransformerLosses from "../calculate/calculate";
+import { TransformerLossesContext } from "../../../contexts/TransformerLossesContext";
 
-export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRun }) {
+export default function Sliders() {
+    const {radioValue, handleSetLosses, setBaseDot, setHasRun, hasRun} = useContext(TransformerLossesContext);
 
     const { formValues, onChange } = useForm({
         U1: Number(20),
@@ -14,14 +16,13 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
 
     useEffect(() => {
         let data = [];
-        setBaseDot(formValues[value])
+        setBaseDot(formValues[radioValue])
 
-        if (value === "all") {
-            setLosses(calculateTransformerLosses(formValues.U1, formValues.S1, formValues.cosphi))
+        if (radioValue === "all") {
+            handleSetLosses(calculateTransformerLosses(formValues.U1, formValues.S1, formValues.cosphi))
         };
 
-        if (value === "U1" && !hasRun) {
-            debugger;
+        if (radioValue === "U1" && !hasRun) {
             for (let i = 18; i < 22; i += 0.04) {
                 const calculatedLosses = calculateTransformerLosses(i, formValues.S1, formValues.cosphi)
                 data.push({
@@ -33,7 +34,7 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
             };
         };
 
-        if (value === "S1" && !hasRun) {
+        if (radioValue === "S1" && !hasRun) {
             for (let i = 10; i <= 1000; i += 10) {
                 debugger;
                 const calculatedLosses = calculateTransformerLosses(formValues.U1, i, formValues.cosphi)
@@ -46,7 +47,7 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
             };
         };
 
-        if (value === "cosphi" && !hasRun) {
+        if (radioValue=== "cosphi" && !hasRun) {
             for (let i = 0.01; i <= 1; i += 0.01) {
                 const calculatedLosses = calculateTransformerLosses(formValues.U1, formValues.S1, i)
                 data.push({
@@ -61,9 +62,9 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
         if(data.length < 1) {
             return;
         };
-        setLosses(data)
+        handleSetLosses(data)
         setHasRun(true)
-    }, [formValues, value]);
+    }, [formValues, radioValue]);
 
     return (
         <Box>
@@ -71,14 +72,14 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
             <Box>
                 <Slider
                     name="U1"
-                    value={formValues.U1}
+                    value={formValues?.U1}
                     onChange={onChange}
                     valueLabelDisplay="on"
                     min={18}
                     max={22}
                     marks={U1options}
                     step={0.04}
-                    disabled={value === 'U1' || value === 'all' ? false : true}
+                    disabled={radioValue === 'U1' || radioValue === 'all' ? false : true}
                     sx={{ width: '200px' }}
                 />
             </Box>
@@ -86,14 +87,14 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
                 <Typography variant='h5'>S1 [kVA]</Typography>
                 <Slider
                     name="S1"
-                    value={formValues.S1}
+                    value={formValues?.S1}
                     onChange={onChange}
                     valueLabelDisplay="on"
                     min={0}
                     max={1000}
                     marks={S1options}
                     step={10}
-                    disabled={value === 'S1' || value === 'all' ? false : true}
+                    disabled={radioValue === 'S1' || radioValue === 'all' ? false : true}
                     sx={{ width: '200px' }}
                 />
             </Box>
@@ -101,14 +102,14 @@ export default function Sliders({ value, setLosses, setBaseDot, hasRun, setHasRu
                 <Typography variant='h5'>cosφ [ind]</Typography>
                 <Slider
                     name="cosphi"
-                    value={formValues.cosphi}
+                    value={formValues?.cosphi}
                     onChange={onChange}
                     valueLabelDisplay="on"
                     min={0}
                     max={1}
                     marks={cosphioptions}
                     step={0.01}
-                    disabled={value === 'cosphi' || value === 'all' ? false : true}
+                    disabled={radioValue === 'cosphi' || radioValue === 'all' ? false : true}
                     sx={{ width: '200px' }}
                 />
             </Box>
