@@ -25,10 +25,10 @@ export function TransformerLossesProvider({ children }) {
     };
 
     const renderDot = useMemo(() => (props) => {
-        const { cx, cy, payload } = props;
+        const { cx, cy, payload, stroke } = props;
         if (payload.x === baseDot) {
             return (
-                <Dot cx={cx} cy={cy} r={4} stroke="blue" fill="blue" strokeWidth={2} />
+                <Dot cx={cx} cy={cy} r={4} stroke={stroke} fill={stroke} strokeWidth={2} />
             );
         }
         return null;
