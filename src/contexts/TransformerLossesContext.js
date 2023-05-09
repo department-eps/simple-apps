@@ -7,6 +7,7 @@ export function TransformerLossesProvider({ children }) {
     const [radioValue, setRadioValue] = useState('all');
     const [losses, setLosses] = useState([]);
     const [baseDot, setBaseDot] = useState();
+    const [showLosses, setShowLosses] = useState({})
     const [hasRun, setHasRun] = useState(false);
 
     const handleSetRadioValue = useCallback((newValue) => {
@@ -41,7 +42,9 @@ export function TransformerLossesProvider({ children }) {
         hasRun,
         setHasRun,
         handleRadioChange,
-        renderDot
+        renderDot,
+        showLosses,
+        setShowLosses
     };
 
     return (

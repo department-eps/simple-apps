@@ -6,7 +6,7 @@ import calculateTransformerLosses from "../calculate/calculate";
 import { TransformerLossesContext } from "../../../contexts/TransformerLossesContext";
 import styles from "./Sliders.module.css"
 export default function Sliders() {
-    const { radioValue, handleSetLosses, setBaseDot, setHasRun, hasRun } = useContext(TransformerLossesContext);
+    const { radioValue, handleSetLosses, setBaseDot, setHasRun, hasRun, setShowLosses } = useContext(TransformerLossesContext);
 
     const { formValues, onChange } = useForm({
         U1: Number(20),
@@ -17,10 +17,6 @@ export default function Sliders() {
     useEffect(() => {
         let data = [];
         setBaseDot(formValues[radioValue])
-
-        if (radioValue === "all") {
-            handleSetLosses(calculateTransformerLosses(formValues.U1, formValues.S1, formValues.cosphi))
-        };
 
         if (radioValue === "U1" && !hasRun) {
             for (let i = 18; i <= 22; i += 0.04) {
@@ -58,12 +54,14 @@ export default function Sliders() {
                 });
             };
         };
+        
+        setShowLosses(calculateTransformerLosses(formValues.U1, formValues.S1, formValues.cosphi));
 
         if (data.length < 1) {
             return;
         };
-        handleSetLosses(data)
-        setHasRun(true)
+        handleSetLosses(data);
+        setHasRun(true);
     }, [formValues, radioValue]);
 
     return (
