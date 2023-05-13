@@ -25,6 +25,16 @@ export default function PowerLineLosses() {
                     <ReactiveResistanceForKm />
                     <LengthLine />
                 </Grid>
+                <Grid item xs={12} md={12} lg={12} sx={{ textAlign: 'left', fontFamily: 'sans-serif' }}>
+                    <Typography sx={{ fontSize: '20px' }}>Положителни <span className="katex mathnormal" style={{ fontStyle: 'italic' }}>P, Q</span> означават консумация на мощност.</Typography>
+                    <Typography sx={{ fontSize: '20px' }}>Отрицателни <span className="katex mathnormal" style={{ fontStyle: 'italic' }}>P, Q</span> означават генерация на мощност (например PV централа).</Typography>
+                    <Typography sx={{ fontSize: '20px', paddingTop: '20px' }}>Изследвайте как загубите на напрежение се влияят от:</Typography>
+                    <ul style={{fontSize: '20px'}}>
+                        <li>Активна мощност на товара</li>
+                        <li>Реактивна мощност на товара</li>
+                        <li>Дължината (т.е импеданса) на товара</li>
+                    </ul>
+                </Grid>
             </Grid>
         </Container>
     );
