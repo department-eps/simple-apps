@@ -6,7 +6,7 @@ export const PowerLineLossEquation = () => {
   return (
     <div style={{fontSize: '25px', fontFamily: 'sans-serif'}}>
       <BlockMath
-        math={'\\Delta U = \\frac{P \\cdot R + P \\cdot Q}{U_n} \\textsf{, [V]}'}
+        math={'\\Delta U = \\frac{P \\cdot R + Q \\cdot X}{U_n} \\textsf{, [V]}'}
       />
     </div>
   );
