@@ -1,7 +1,12 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { ActivePower, ActiveResistance, LongitudinalReactiveResistance, LongitudinalActiveResistance, NominalVoltage, PowerLineLossEquation, ReactivePower, ReactiveResistance, ActiveResistanceForKm, ReactiveResistanceForKm, LengthLine } from "./Equations";
+import RadioButtons from "./RadioButtons";
+import { useState } from "react";
+import Sliders from "./Sliders";
 
 export default function PowerLineLosses() {
+    const [radioValue, setRadioValue] = useState('all');
+
     return (
         <Container maxWidth={'lg'} sx={{ paddingTop: '90px' }}>
             <Grid container spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -34,6 +39,12 @@ export default function PowerLineLosses() {
                         <li>Реактивна мощност на товара</li>
                         <li>Дължината (т.е импеданса) на товара</li>
                     </ul>
+                </Grid>
+                <Grid item xs={12} md={6} lg={3} sx={{ textAlign: 'center', fontFamily: 'sans-serif' }}>
+                    <RadioButtons radioValue={radioValue} setRadioValue={setRadioValue} />
+                </Grid>
+                <Grid item xs={12} md={6} lg={3} sx={{ textAlign: 'center', fontFamily: 'sans-serif' }}>
+                    <Sliders radioValue={radioValue} />
                 </Grid>
             </Grid>
         </Container>
