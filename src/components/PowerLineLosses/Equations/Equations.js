@@ -14,7 +14,7 @@ export const PowerLineLossEquation = () => {
 
 export const ActivePower = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
+    <div>
       <InlineMath math={'P'} /> - активна мощност [kW]
     </div>
   );
@@ -22,7 +22,7 @@ export const ActivePower = () => {
 
 export const ReactivePower = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
+    <div>
       <InlineMath math={'Q'} /> - реактивна мощност [kVAr]
     </div>
   );
@@ -30,7 +30,7 @@ export const ReactivePower = () => {
 
 export const ActiveResistance = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
+    <div>
       <InlineMath math={'R'} /> - активно съпр. на линията [Ω]
     </div>
   );
@@ -38,7 +38,7 @@ export const ActiveResistance = () => {
 
 export const ReactiveResistance = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
+    <div>
       <InlineMath math={'X'} /> - индуктивно съпр. на линията [Ω]
     </div>
   );
@@ -46,15 +46,15 @@ export const ReactiveResistance = () => {
 
 export const NominalVoltage = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
-      <InlineMath math={'U_n'} /> - номинално напрежение на линията [Ω]
+    <div>
+      <InlineMath math={'U_n'} /> - ном. напрежение на линията [Ω]
     </div>
   );
 };
 
 export const LongitudinalActiveResistance= () => {
   return (
-    <div style={{ fontSize: '20px'}}>
+    <div>
       <InlineMath math={'R = R_0 \\cdot L_w'} />
     </div>
   );
@@ -62,7 +62,7 @@ export const LongitudinalActiveResistance= () => {
 
 export const LongitudinalReactiveResistance= () => {
   return (
-    <div style={{ fontSize: '20px'}}>
+    <div>
       <InlineMath math={'X = X_0 \\cdot L_w'} />
     </div>
   );
@@ -70,23 +70,23 @@ export const LongitudinalReactiveResistance= () => {
 
 export const ActiveResistanceForKm = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
-      <InlineMath math={'R_0'} /> - активно съпр. на линията за 1км [Ω/km]
+    <div>
+      <InlineMath math={'R_0'} /> - акт. съпр. на линията за 1км [Ω/km]
     </div>
   );
 };
 
 export const ReactiveResistanceForKm = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
-      <InlineMath math={'X_0'} /> - реактивно съпр. на линията за 1км [Ω/km]
+    <div>
+      <InlineMath math={'X_0'} /> - реакт. съпр. на линията за 1км [Ω/km]
     </div>
   );
 };
 
 export const LengthLine = () => {
   return (
-    <div style={{ fontSize: '20px', fontFamily: 'sans-serif' }}>
+    <div>
       <InlineMath math={'L_w'} /> - дължина на линията [km]
     </div>
   );
