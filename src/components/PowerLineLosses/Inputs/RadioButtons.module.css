@@ -1,0 +1,12 @@
+.radiobutton-label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+.radiobutton-label-katex {
+    white-space: nowrap;
+    text-rendering: auto;
+    font: normal 1.21em KaTeX_Main, 'Times New Roman', serif;
+    line-height: 1.2;
+    text-indent: 0;
+    font-style: italic;
+}

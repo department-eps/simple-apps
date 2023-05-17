@@ -1,0 +1,25 @@
+.slider {
+    width: 200px;
+}
+
+.slider :global .MuiSlider-valueLabel {
+    top: 3px;
+    transform: rotate(180deg);
+}
+
+.slider :global .MuiSlider-valueLabel>span {
+    transform: rotate(180deg);
+}
+.slider-label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    white-space: nowrap;
+}
+.slider-label-katex {
+    white-space: nowrap;
+    text-rendering: auto;
+    font: normal 1.21em KaTeX_Main, 'Times New Roman', serif;
+    line-height: 1.2;
+    text-indent: 0;
+    font-style: italic;
+}
