@@ -1,6 +1,5 @@
 import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from "@mui/material"
-import { useState } from "react";
-
+import styles from "./RadioButtons.module.css"
 export default function RadioButtons({radioValue, setRadioValue}) {
 
     const handleRadioChange = (e) => {
@@ -8,7 +7,7 @@ export default function RadioButtons({radioValue, setRadioValue}) {
     };
     return (
         <FormControl>
-            <FormLabel>Влияние на:</FormLabel>
+            <FormLabel className={styles['radiobutton-label']}>Влияние на:</FormLabel>
             <RadioGroup
                 value={radioValue}
                 onChange={handleRadioChange}
@@ -16,19 +15,19 @@ export default function RadioButtons({radioValue, setRadioValue}) {
                 <FormControlLabel
                     value="all"
                     control={<Radio />}
-                    label="Всички" />
+                    label={<span className={styles['radiobutton-label']}>Всички</span>} />
                 <FormControlLabel
                     value="P"
                     control={<Radio />}
-                    label={<span>Активна мощ. <span className="katex mathnormal" style={{ fontStyle: 'italic' }}>P</span></span>} />
+                    label={<span className={styles['radiobutton-label']}>Активна мощ. <span className={styles['radiobutton-label-katex']}>P</span></span>} />
                 <FormControlLabel
                     value="Q"
                     control={<Radio />}
-                    label={<span>Реакт. мощ. <span className="katex mathnormal" style={{ fontStyle: 'italic' }}>Q</span></span>} />
+                    label={<span className={styles['radiobutton-label']}>Реакт. мощ. <span className={styles['radiobutton-label-katex']}>Q</span></span>} />
                 <FormControlLabel
                     value="Lw"
                     control={<Radio />}
-                    label={<span>Дължина</span>} />
+                    label={<span className={styles['radiobutton-label']}>Дължина</span>} />
             </RadioGroup>
         </FormControl>
     );
