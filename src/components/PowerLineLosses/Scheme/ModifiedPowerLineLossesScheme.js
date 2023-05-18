@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { ReactComponent as PowerLineLossesScheme } from './PowerLineLossesScheme.svg'
 import { InlineMath } from 'react-katex';
+import { ReactComponent as PowerLineLossesScheme } from './PowerLineLossesScheme.svg'
 import { PowerLineLossesContext } from '../../../contexts/PowerLineLossesContext';
 
 export default function ModifiedPowerLineLossesScheme() {

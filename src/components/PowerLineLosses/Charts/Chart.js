@@ -1,9 +1,8 @@
-import { useMemo } from "react";
+import { useMemo, useContext } from "react";
 import { CartesianGrid, Label, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import styles from './Chart.module.css'
-import { useContext } from "react";
 import { PowerLineLossesContext } from "../../../contexts/PowerLineLossesContext";
 import { calculateXTicks } from "./chartUtil";
+import styles from './Chart.module.css'
 
 
 export default function Chart() {

@@ -1,6 +1,6 @@
 import { Slider, Box, Typography } from "@mui/material"
-import { useForm } from '../../../hooks/useForm'
 import { useEffect, useContext, useState } from "react";
+import { useForm } from '../../../hooks/useForm'
 import calculatePowerLineLosses from "../calculate/calculate";
 import { Lwoptions, Poptions, Qoptions } from "../../../utils/constants";
 import { PowerLineLossesContext } from "../../../contexts/PowerLineLossesContext";

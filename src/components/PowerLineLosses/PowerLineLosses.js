@@ -3,9 +3,9 @@ import { ActivePower, ActiveResistance, LongitudinalReactiveResistance, Longitud
 import RadioButtons from "./Inputs/RadioButtons";
 import Sliders from "./Inputs/Sliders";
 import Chart from "./Charts/Chart";
-import styles from "./PowerLineLosses.module.css";
 import ModifiedPowerLineLossesScheme from "./Scheme/ModifiedPowerLineLossesScheme";
 import { PowerLineLossesProvider } from "../../contexts/PowerLineLossesContext";
+import styles from "./PowerLineLosses.module.css";
 
 export default function PowerLineLosses() {
     return (

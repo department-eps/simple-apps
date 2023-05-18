@@ -1,6 +1,6 @@
 import React from 'react';
-import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
 export const PowerLineLossEquation = () => {
   return (

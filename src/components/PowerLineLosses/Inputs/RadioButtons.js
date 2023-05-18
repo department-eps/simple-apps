@@ -1,7 +1,7 @@
 import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from "@mui/material"
-import styles from "./RadioButtons.module.css"
 import { useContext } from "react";
 import { PowerLineLossesContext } from "../../../contexts/PowerLineLossesContext";
+import styles from "./RadioButtons.module.css"
 
 export default function RadioButtons() {
     const {handleRadioChange, radioValue} = useContext(PowerLineLossesContext);
