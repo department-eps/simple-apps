@@ -1,11 +1,15 @@
 import { Slider, Box, Typography } from "@mui/material"
 import { useForm } from '../../../hooks/useForm'
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
 import calculatePowerLineLosses from "../calculate/calculate";
-import styles from './Sliders.module.css'
 import { Lwoptions, Poptions, Qoptions } from "../../../utils/constants";
+import { PowerLineLossesContext } from "../../../contexts/PowerLineLossesContext";
+import { forLoopPowerLossesOptions } from "../../../utils/powerLineLossesUtil";
+import styles from './Sliders.module.css'
 
-export default function Sliders({ radioValue, setVoltageLosses, setCurrentVoltageLosses }) {
+export default function Sliders() {
+    const { radioValue, setVoltageLosses, setCurrentVoltageLosses } = useContext(PowerLineLossesContext);
+    const [previousRadioValue, setPreviousRadioValue] = useState('');
 
     const { formValues, onChange } = useForm({
         P: Number(0),
@@ -15,39 +19,34 @@ export default function Sliders({ radioValue, setVoltageLosses, setCurrentVoltag
 
     useEffect(() => {
         const data = [];
-        if (radioValue === 'P') {
-            for (let i = -100; i <= 100; i += 2) {
-                const calculatedLosses = calculatePowerLineLosses(i, formValues.Q, formValues.Lw)
-                data.push(
-                    {
-                        x: Number(i.toFixed(2)),
-                        y: calculatedLosses.deltaU
-                    },
-                );
-            };
-        } else if (radioValue === 'Q') {
-            for (let i = -100; i <= 100; i += 2) {
-                const calculatedLosses = calculatePowerLineLosses(formValues.P, i, formValues.Lw)
-                data.push(
-                    {
-                        x: Number(i.toFixed(2)),
-                        y: calculatedLosses.deltaU
-                    },
-                );
-            };
-        } else if (radioValue === 'Lw') {
-            for (let i = 10; i <= 1000; i += 10) {
-                const calculatedLosses = calculatePowerLineLosses(formValues.P, formValues.Q, i)
-                data.push(
-                    {
-                        x: Number(i.toFixed(2)),
-                        y: calculatedLosses.deltaU
-                    },
-                );
-            };
+        const { P, Q, Lw } = formValues;
+
+        setCurrentVoltageLosses({ lineLosses: calculatePowerLineLosses(P, Q, Lw), x: formValues[radioValue] });
+
+        if (radioValue === previousRadioValue) {
+            return;
         };
-        setCurrentVoltageLosses(calculatePowerLineLosses(formValues.P, formValues.Q, formValues.Lw));
+
+        const { start, end, step } = forLoopPowerLossesOptions(radioValue);
+
+        for (let i = start; i <= end; i += step) {
+            let calculatedLosses;
+            if (radioValue === 'P') {
+                calculatedLosses = calculatePowerLineLosses(i, Q, Lw);
+            } else if (radioValue === 'Q') {
+                calculatedLosses = calculatePowerLineLosses(P, i, Lw);
+            } else if (radioValue === 'Lw') {
+                calculatedLosses = calculatePowerLineLosses(P, Q, i);
+            }
+
+            data.push({
+                x: Number(i.toFixed(2)),
+                y: calculatedLosses.deltaU
+            });
+        };
         setVoltageLosses(data);
+        setPreviousRadioValue(radioValue);
+
     }, [formValues, radioValue]);
 
     return (

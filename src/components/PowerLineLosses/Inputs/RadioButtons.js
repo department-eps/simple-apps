@@ -1,10 +1,11 @@
 import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from "@mui/material"
 import styles from "./RadioButtons.module.css"
-export default function RadioButtons({radioValue, setRadioValue}) {
+import { useContext } from "react";
+import { PowerLineLossesContext } from "../../../contexts/PowerLineLossesContext";
 
-    const handleRadioChange = (e) => {
-        setRadioValue(e.target.value);
-    };
+export default function RadioButtons() {
+    const {handleRadioChange, radioValue} = useContext(PowerLineLossesContext);
+
     return (
         <FormControl>
             <FormLabel className={styles['radiobutton-label']}>Влияние на:</FormLabel>
