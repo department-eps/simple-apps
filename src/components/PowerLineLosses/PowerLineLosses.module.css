@@ -20,15 +20,6 @@
     margin: 0 auto;
     text-align: left;
 }
-.chart-label {
-    position: absolute;
-    padding-top: 15px;
-    padding-right: 345px;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    white-space: nowrap;
-    font-size: 20px;
-}
-
 .katex-label {
     white-space: nowrap;
     text-rendering: auto;

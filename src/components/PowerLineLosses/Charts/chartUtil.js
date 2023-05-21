@@ -2,12 +2,20 @@ export function calculateXTicks(radioValue) {
     let measuringUnits = '';
     const xTicks = [];
     if (radioValue === 'P') {
-        for (let i = -100; i <= 100; i += 20) {
+        let step = 20;
+        if (window.innerWidth < 600) {
+            step = 50;
+        }
+        for (let i = -100; i <= 100; i += step) {
             xTicks.push(i);
             measuringUnits = 'Активна мощност [kW]'
         }
     } else if (radioValue === "Q") {
-        for (let i = -100; i <= 100; i += 20) {
+        let step = 20;
+        if (window.innerWidth < 600) {
+            step = 50;
+        }
+        for (let i = -100; i <= 100; i += step) {
             xTicks.push(i);
             measuringUnits = 'Реакт. мощност [kVAr]'
         }
@@ -18,4 +26,8 @@ export function calculateXTicks(radioValue) {
         }
     }
     return [xTicks, measuringUnits];
+};
+
+export const scrollToBottom = () => {
+    window.scrollTo(0, document.body.scrollHeight);
 };

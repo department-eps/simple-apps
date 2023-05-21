@@ -3,3 +3,11 @@
     fill: black;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.chart-label {
+    position: absolute;
+    padding-top: 15px;
+    padding-right: 345px;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-size: 20px;
+}

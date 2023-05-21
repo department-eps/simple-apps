@@ -1,5 +1,5 @@
 import { Box, Container, Grid, StyledEngineProvider, Typography } from "@mui/material";
-import { ActivePower, ActiveResistance, LongitudinalReactiveResistance, LongitudinalActiveResistance, NominalVoltage, PowerLineLossEquation, ReactivePower, ReactiveResistance, ActiveResistanceForKm, ReactiveResistanceForKm, LengthLine, DeltaULabel } from "./Equations/Equations";
+import { ActivePower, ActiveResistance, LongitudinalReactiveResistance, LongitudinalActiveResistance, NominalVoltage, PowerLineLossEquation, ReactivePower, ReactiveResistance, ActiveResistanceForKm, ReactiveResistanceForKm, LengthLine } from "./Equations/Equations";
 import RadioButtons from "./Inputs/RadioButtons";
 import Sliders from "./Inputs/Sliders";
 import Chart from "./Charts/Chart";
@@ -58,10 +58,8 @@ export default function PowerLineLosses() {
                         <Grid item xs={12} md={6} lg={3} className={styles['item-center']}>
                             <Sliders />
                         </Grid>
+
                         <Grid item xs={12} md={12} lg={12} sx={{ textAlign: 'center' }}>
-                            <Typography className={styles['chart-label']}>
-                                <DeltaULabel />
-                            </Typography>
                             <Chart />
                         </Grid>
                     </Grid>
