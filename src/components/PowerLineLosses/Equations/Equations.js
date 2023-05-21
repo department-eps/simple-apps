@@ -4,7 +4,7 @@ import 'katex/dist/katex.min.css';
 
 export const PowerLineLossEquation = () => {
   return (
-    <div style={{fontSize: '25px', fontFamily: 'sans-serif'}}>
+    <div style={{ fontSize: '25px', fontFamily: 'sans-serif' }}>
       <BlockMath
         math={'\\Delta U = \\frac{P \\cdot R + Q \\cdot X}{U_n} \\textsf{, [V]}'}
       />
@@ -52,7 +52,7 @@ export const NominalVoltage = () => {
   );
 };
 
-export const LongitudinalActiveResistance= () => {
+export const LongitudinalActiveResistance = () => {
   return (
     <div>
       <InlineMath math={'R = R_0 \\cdot L_w'} />
@@ -60,7 +60,7 @@ export const LongitudinalActiveResistance= () => {
   );
 };
 
-export const LongitudinalReactiveResistance= () => {
+export const LongitudinalReactiveResistance = () => {
   return (
     <div>
       <InlineMath math={'X = X_0 \\cdot L_w'} />
@@ -92,4 +92,11 @@ export const LengthLine = () => {
   );
 };
 
+export const DeltaULabel = () => {
+  return (
+    <div style={{fontSize: '20px'}}>
+      <InlineMath math={'\\Delta U'}/> [V]
+    </div>
+  );
+};
 

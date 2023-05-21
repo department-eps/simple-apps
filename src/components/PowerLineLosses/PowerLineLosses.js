@@ -1,5 +1,5 @@
 import { Box, Container, Grid, StyledEngineProvider, Typography } from "@mui/material";
-import { ActivePower, ActiveResistance, LongitudinalReactiveResistance, LongitudinalActiveResistance, NominalVoltage, PowerLineLossEquation, ReactivePower, ReactiveResistance, ActiveResistanceForKm, ReactiveResistanceForKm, LengthLine } from "./Equations/Equations";
+import { ActivePower, ActiveResistance, LongitudinalReactiveResistance, LongitudinalActiveResistance, NominalVoltage, PowerLineLossEquation, ReactivePower, ReactiveResistance, ActiveResistanceForKm, ReactiveResistanceForKm, LengthLine, DeltaULabel } from "./Equations/Equations";
 import RadioButtons from "./Inputs/RadioButtons";
 import Sliders from "./Inputs/Sliders";
 import Chart from "./Charts/Chart";
@@ -38,7 +38,7 @@ export default function PowerLineLosses() {
                             </Box>
                         </Grid>
                         <Grid item xs={12} md={12} lg={12}>
-                            <Box paddingTop={5}>
+                            <Box paddingTop={5} className={styles['text']}>
                                 <div>Положителни <span className={styles['katex-label']}>P, Q</span> означават консумация на мощност.</div>
                                 <div>Отрицателни <span className={styles['katex-label']}>P, Q</span> означават генерация на мощност (например PV централа).</div>
                                 <div style={{ paddingTop: '50px' }}>Изследвайте как загубите на напрежение се влияят от:</div>
@@ -60,7 +60,7 @@ export default function PowerLineLosses() {
                         </Grid>
                         <Grid item xs={12} md={12} lg={12} sx={{ textAlign: 'center' }}>
                             <Typography className={styles['chart-label']}>
-                                <span className={styles['katex-label']}>ΔU</span><span> [V]</span>
+                                <DeltaULabel />
                             </Typography>
                             <Chart />
                         </Grid>
