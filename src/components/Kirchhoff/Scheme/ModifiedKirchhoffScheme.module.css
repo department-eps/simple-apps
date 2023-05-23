@@ -1,0 +1,20 @@
+.container {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20pt;
+    padding-top: 30px;
+}
+.wrapper {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+.input {
+    width: 40px;
+    font-size: 20pt;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    border: 1px solid;
+}
+.units {
+    padding-left: 10px;
+}

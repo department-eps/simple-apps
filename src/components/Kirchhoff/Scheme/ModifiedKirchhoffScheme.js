@@ -1,7 +1,7 @@
 import { ReactComponent as KirchhoffScheme } from './KirchhoffScheme.svg'
 import { useEffect, useState } from 'react';
 import { useForm } from '../../../hooks/useForm'
-import { Typography } from '@mui/material';
+import styles from './ModifiedKirchhoffScheme.module.css'
 
 export default function ModifiedKirchhoffScheme() {
     const [nodes, setNodes] = useState({});
@@ -24,67 +24,65 @@ export default function ModifiedKirchhoffScheme() {
     }, [formValues])
 
     return (
-        <svg width="450" height="155" style={{ width: "100%", height: "auto", maxWidth: "100%" }} viewBox="0 150 900 50" preserveAspectRatio="xMidYMid meet">
-            <KirchhoffScheme />
-            {typeof nodes.node1 !== 'undefined' && !isNaN(nodes.node1) &&
-                typeof nodes.node2 !== 'undefined' && !isNaN(nodes.node2) &&
-                typeof nodes.node3 !== 'undefined' && !isNaN(nodes.node3) &&
-                <>
-                    <foreignObject x="215" y="35" width="130px" height="40">
-                        <div xmlns="http://www.w3.org/1999/xhtml">
-                            <Typography sx={{ fontSize: '20pt', fontFamily: 'Times New Roman' }}>{nodes.node1} kW</Typography>
-                        </div>
-                    </foreignObject>
-                    <foreignObject x="435" y="35" width="130px" height="40">
-                        <div xmlns="http://www.w3.org/1999/xhtml">
-                            <Typography sx={{ fontSize: '20pt', fontFamily: 'Times New Roman' }}>{nodes.node2} kW</Typography>
-                        </div>
-                    </foreignObject>
-                    <foreignObject x="642" y="35" width="130px" height="40">
-                        <div xmlns="http://www.w3.org/1999/xhtml">
-                            <Typography sx={{ fontSize: '20pt', fontFamily: 'Times New Roman' }}>{nodes.node3} kW</Typography>
-                        </div>
-                    </foreignObject>
-                </>
-            }
-            <foreignObject x="371" y="230" width="100px" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml" style={{ display: 'flex' }}>
-                    <input
-                        style={{ width: '40px', fontSize: '20pt', textAlign: 'center', fontFamily: 'Times New Roman' }}
-                        name='B1'
-                        value={formValues.B1}
-                        onChange={onChange}
-                        inputMode="decimal"
-                    ></input>
-                    <Typography sx={{ fontSize: '19pt', fontFamily: 'Times New Roman', paddingLeft: '10px' }}>kW</Typography>
-                </div>
-            </foreignObject>
-            <foreignObject x="578" y="230" width="100px" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml" style={{ display: 'flex' }}>
-                    <input
-                        style={{ width: '40px', fontSize: '20pt', textAlign: 'center', fontFamily: 'Times New Roman' }}
-                        name='B2'
-                        value={formValues.B2}
-                        onChange={onChange}
-                        inputMode="decimal"
-                        lang='en'
-                    ></input>
-                    <Typography sx={{ fontSize: '20pt', fontFamily: 'Times New Roman', paddingLeft: '10px' }}>kW</Typography>
-                </div>
-            </foreignObject>
-            <foreignObject x="783" y="230" width="100px" height="40">
-                <div xmlns="http://www.w3.org/1999/xhtml" style={{ display: 'flex' }}>
-                    <input
-                        style={{ width: `40px`, fontSize: '20pt', textAlign: 'center', fontFamily: 'Times New Roman' }}
-                        name='B3'
-                        value={formValues.B3}
-                        onChange={onChange}
-                        inputMode="decimal"
-                    >
-                    </input>
-                    <Typography sx={{ fontSize: '20pt', fontFamily: 'Times New Roman', paddingLeft: '10px' }}>kW</Typography>
-                </div>
-            </foreignObject>
-        </svg>
+        <div className={styles['container']}>
+            <svg width="450" height="155" className={styles['wrapper']} viewBox="30 150 900 50" preserveAspectRatio="xMidYMid meet">
+                <KirchhoffScheme />
+                {typeof nodes.node1 !== 'undefined' && !isNaN(nodes.node1) &&
+                    typeof nodes.node2 !== 'undefined' && !isNaN(nodes.node2) &&
+                    typeof nodes.node3 !== 'undefined' && !isNaN(nodes.node3) &&
+                    <>
+                        <foreignObject x="215" y="35" width="130px" height="40">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span>{nodes.node1} kW</span>
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="435" y="35" width="130px" height="40">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span>{nodes.node2} kW</span>
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="642" y="35" width="130px" height="40">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span>{nodes.node3} kW</span>
+                            </div>
+                        </foreignObject>
+                    </>
+                }
+                <foreignObject x="360" y="230" width="120px" height="50">
+                    <span xmlns="http://www.w3.org/1999/xhtml">
+                        <input
+                            className={styles['input']}
+                            name='B1'
+                            value={formValues.B1}
+                            onChange={onChange}
+                        ></input>
+                        <span className={styles['units']}>kW</span>
+                    </span>
+                </foreignObject>
+                <foreignObject x="568" y="230" width="120px" height="50">
+                    <span xmlns="http://www.w3.org/1999/xhtml">
+                        <input
+                            className={styles['input']}
+                            name='B2'
+                            value={formValues.B2}
+                            onChange={onChange}
+                        ></input>
+                        <span className={styles['units']}>kW</span>
+                    </span>
+                </foreignObject>
+                <foreignObject x="772" y="230" width="120px" height="50">
+                    <span xmlns="http://www.w3.org/1999/xhtml">
+                        <input
+                            className={styles['input']}
+                            name='B3'
+                            value={formValues.B3}
+                            onChange={onChange}
+                        >
+                        </input>
+                        <span className={styles['units']}>kW</span>
+                    </span>
+                </foreignObject>
+            </svg>
+        </div>
     );
 };
