@@ -1,0 +1,10 @@
+.container {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20pt;
+    padding-top: 30px;
+}
+.wrapper {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}

@@ -5,7 +5,7 @@ export default function calculateTransformerLosses(U1, S1, cosphi) {
     const Snom = 1000e3;
     const P1 = S1 * cosphi;
     const Q1 = sqrt(S1 ** 2 - P1 ** 2);
-    const loading = (S1/1000)*100
+    const loading = ((S1/1000)*100).toFixed(0)
     const impedance = calculateTransformerImpedance(U1nom, Snom);
     const Sidle = complex((U1 * 1e3) ** 2 * impedance.Gt, (U1 * 1e3) ** 2 * impedance.Bt);
     const transverse_conductance_S1 = subtract(complex(P1 * 1e3, Q1 * 1e3), Sidle);
@@ -29,4 +29,4 @@ function calculateTransformerImpedance(U1nom, Snom) {
     const Qidle = (1.3 * 1000) / 100;
     const Bt = (Qidle * 1e3) / U1nom ** 2;
     return { Gt, Bt, Rt, Xt };
-}
+};

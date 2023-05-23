@@ -1,10 +1,12 @@
-import { Slider, Box, Typography } from "@mui/material"
+import { Slider, Box } from "@mui/material"
 import { useContext, useEffect } from "react";
 import { S1options, U1options, cosphioptions } from "../../../utils/constants";
 import { useForm } from "../../../hooks/useForm";
 import calculateTransformerLosses from "../calculate/calculate";
 import { TransformerLossesContext } from "../../../contexts/TransformerLossesContext";
 import styles from "./Sliders.module.css"
+import { InlineMath } from "react-katex";
+
 export default function Sliders() {
     const { radioValue, handleSetLosses, setBaseDot, setHasRun, hasRun, setShowLosses } = useContext(TransformerLossesContext);
 
@@ -54,7 +56,7 @@ export default function Sliders() {
                 });
             };
         };
-        
+
         setShowLosses(calculateTransformerLosses(formValues.U1, formValues.S1, formValues.cosphi));
 
         if (data.length < 1) {
@@ -66,7 +68,9 @@ export default function Sliders() {
 
     return (
         <Box>
-            <Typography sx={{ fontSize: '20px'}}>U1 [kV]</Typography>
+            <div className={styles['slider-label']}>
+                <span className={styles['slider-label']}><InlineMath math={'U_1'} /> [kV]</span>
+            </div>
             <Box>
                 <Slider
                     name="U1"
@@ -81,8 +85,12 @@ export default function Sliders() {
                     className={styles['slider']}
                 />
             </Box>
-            <Box sx={{paddingTop: '10px'}}>
-                <Typography sx={{ fontSize: '20px' }}>S1 [kVA]</Typography>
+            <Box sx={{ paddingTop: '10px' }}>
+                <div className={styles['slider-label']}>
+                    <span>
+                        <span><InlineMath math={'S_1'} /> [kVA]</span>
+                    </span>
+                </div>
                 <Slider
                     name="S1"
                     value={formValues?.S1}
@@ -96,8 +104,12 @@ export default function Sliders() {
                     className={styles['slider']}
                 />
             </Box>
-            <Box sx={{paddingTop: '10px'}}>
-                <Typography sx={{ fontSize: '20px' }}>cosφ [ind]</Typography>
+            <Box sx={{ paddingTop: '10px' }}>
+                <div className={styles['slider-label']}>
+                    <span>
+                        <span><InlineMath math={'\\cosφ'} /> [ind]</span>
+                    </span>
+                </div>
                 <Slider
                     name="cosphi"
                     value={formValues?.cosphi}
