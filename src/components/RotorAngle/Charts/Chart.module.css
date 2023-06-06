@@ -1,0 +1,18 @@
+.chart-container {
+  font-size: 20px;
+  fill: black;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  height: 400px;
+}
+.chart-label-y {
+  position: absolute;
+  transform: translate(-60px, 165px) rotate(-90deg);
+  white-space: nowrap;
+  font-size: 20px;
+  width: 150px;
+}
+.chart-label-x {
+  position: relative;
+  margin-left: 45px;
+}

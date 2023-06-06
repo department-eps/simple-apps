@@ -1,7 +1,9 @@
 import { calculate, convert } from "../../../utils/rotorAngleUtil";
 import { complex } from "mathjs";
 
-export function calculateRotorAngle(Ra, Xd, U1, P1, H, U2, thetaU2) {
+export function calculateRotorAngle({formValues}, P1) {
+    const {Ra, Xd, U1, H, U2, thetaU2} = formValues
+    P1 = Number(P1)
     const Z = complex(0.05, 0.5);
     // angular frequency for 50hz
     const omega0 = calculate.omega0();
@@ -35,6 +37,6 @@ export function calculateRotorAngle(Ra, Xd, U1, P1, H, U2, thetaU2) {
     // polynome roots
     const roots = calculate.rootsOfPolynome(Kd, H, Ks, omega0);
     // decrement
-    //    const ksi = calculate.ksi(roots.root1);
-    return roots
+    const ksi = calculate.ksi(roots.root1);
+    return [roots, Ks, Kd, ksi, P1, delta0]
 }

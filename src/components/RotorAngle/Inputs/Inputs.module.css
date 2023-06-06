@@ -1,0 +1,36 @@
+.input-label {
+    font-size: 1.3em;
+    color: black;
+    /* padding-left: 5px; */
+}
+.input-field {
+    width: 150px;
+}
+.item {
+    text-align: center;
+}
+.input-field :global .MuiInputLabel-shrink {
+    color: black;
+    font-size: 20px;
+    transform: translate(0, -1.5px) scale(0.85);
+}
+.input-field :global .MuiTypography-root {
+    color: black;
+    font-size: 20px;
+}
+.input-field :global .MuiInputBase-root {
+    font-size: 20px;
+    color: black;
+}
+.input-field :global .MuiInputLabel-root {
+    color: black
+}
+
+.slider :global .MuiSlider-valueLabel {
+    top: 3px;
+    transform: rotate(180deg);
+}
+
+.slider :global .MuiSlider-valueLabel>span {
+    transform: rotate(180deg);
+}
