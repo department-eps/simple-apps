@@ -74,11 +74,11 @@ export default function Plot({ values }) {
     function powerAngle(Us, Ur, Z) {
         let Y = divide(1, Z);
         let alpha = pi / 2 + atan2(Y.im, Y.re);
-        let angs = atan2(Us.im, Us.re);
-        let angr = atan2(Ur.im, Ur.re);
+        let angS = atan2(Us.im, Us.re);
+        let angR = atan2(Ur.im, Ur.re);
 
-        let P = abs(Us) ** 2 * abs(Y) * sin(alpha) + abs(Us) * abs(Ur) * abs(Y) * sin(angs - angr - alpha);
-        let Q = abs(Us) ** 2 * abs(Y) * cos(alpha) - abs(Us) * abs(Ur) * abs(Y) * cos(angs - angr - alpha);
+        let P = abs(Us) ** 2 * abs(Y) * sin(alpha) + abs(Us) * abs(Ur) * abs(Y) * sin(angS - angR - alpha);
+        let Q = abs(Us) ** 2 * abs(Y) * cos(alpha) - abs(Us) * abs(Ur) * abs(Y) * cos(angS - angR - alpha);
         return [P, Q];
     };
 };

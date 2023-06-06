@@ -1,0 +1,20 @@
+.chart-container {
+    font-size: 20px;
+    fill: black;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.chart-label {
+    position: absolute;
+    padding-top: 15px;
+    padding-right: 330px;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-size: 20px;
+}
+.chart-label-x {
+    text-align: center;
+    position: absolute;
+    padding-top: 377px;
+    padding-left: 44px;
+    transform: translateX(-50%); 
+}
