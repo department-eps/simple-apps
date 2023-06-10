@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import RotorAngle from "./components/RotorAngle/RotorAngle"
-import Kirchhoff from "./components/Kirchhoff/Kirchhoff";
+import Kirchhoff from "./components/KirchhoffLaw/KirchhoffLaw";
 import TransformerLosses from "./components/TransformerLosses/TransformerLosses";
 import PowerLineLosses from "./components/PowerLineLosses/PowerLineLosses";
 import PowerAngle from "./components/PowerAngle/PowerAngle";

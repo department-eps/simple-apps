@@ -34,7 +34,7 @@ export default function Header() {
                             />
                         </IconButton>
                     </Box>
-                    <Typography variant="h5" sx={{ color: 'black' }}>Tasks</Typography>
+                    <Typography variant="h5" sx={{ color: 'black' }}>Задачи</Typography>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -49,12 +49,12 @@ export default function Header() {
                         <Typography variant="h5">Устойчивост на ЕЕС</Typography>
                         <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
-                                <Typography sx={{ fontSize: '18px' }}>Устойчивост по роторен ъгъл</Typography>
+                                <Typography sx={{ fontSize: '18px' }}>Ъглови характеристики на активна и реактивна мощност</Typography>
                             </ListItem>
                         </Link>
                         <Link to={'/rotor-angle'} style={{textDecoration: 'none', color: 'black'}}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
-                                <Typography sx={{ fontSize: '18px' }}>Ъглова харектеристика</Typography>
+                                <Typography sx={{ fontSize: '18px' }}>Устойчивост по роторен ъгъл при малки смущения</Typography>
                             </ListItem>
                         </Link>
                     </div>

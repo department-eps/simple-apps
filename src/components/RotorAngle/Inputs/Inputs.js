@@ -13,7 +13,8 @@ const initialValues = {
     numberOfModes: 1,
     H: 3.5,
     U2: 1,
-    thetaU2: 0
+    thetaU2: 0,
+    origin: 'RotorAngle'
 };
 
 const mode = ['A', 'B', 'C', 'D', 'E'];
@@ -57,13 +58,13 @@ export default function Inputs({ setResult, setDataTable }) {
 
             current -= formValues.P1 / formValues.numberOfModes;
             counter++;
-        }
+        };
 
         setResult({ scatterDataPlus, scatterDataMinus });
         setDataTable(tempDataTable);
     }, [formValues, setResult, setDataTable]);
 
-    const renderTextField = (name, label, math, endAdornment, type = "text") => (
+    const renderTextField = (name, label, math, endAdornment) => (
         <Tooltip arrow title={<Typography variant="subtitle2">{`This is the ${label} field`}</Typography>}>
             <TextField
                 className={styles["input-field"]}
@@ -75,7 +76,6 @@ export default function Inputs({ setResult, setDataTable }) {
                 }}
                 value={formValues[name]}
                 onChange={onChange}
-                type={type}
                 autoComplete="off"
             />
         </Tooltip>

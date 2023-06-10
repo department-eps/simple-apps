@@ -10,6 +10,7 @@ export default function Inputs({setResult}) {
         Ur: "1",
         X: "1",
         R: "0",
+        origin: "PowerAngle"
     });
     
     useEffect(() => {

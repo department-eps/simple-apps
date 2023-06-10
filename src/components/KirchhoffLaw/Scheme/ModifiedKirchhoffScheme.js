@@ -9,6 +9,7 @@ export default function ModifiedKirchhoffScheme() {
         B1: "5",
         B2: "5",
         B3: "5",
+        origin: 'KirchhoffLaw'
     });
 
     useEffect(() => {
