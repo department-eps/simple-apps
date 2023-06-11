@@ -3,7 +3,7 @@ html, body {
     padding: 0;
     height: 100vh;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: white;
     background-size: cover;
 }
 input[type=number]::-webkit-inner-spin-button, 

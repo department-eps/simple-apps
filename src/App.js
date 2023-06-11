@@ -5,13 +5,15 @@ import Kirchhoff from "./components/KirchhoffLaw/KirchhoffLaw";
 import TransformerLosses from "./components/TransformerLosses/TransformerLosses";
 import PowerLineLosses from "./components/PowerLineLosses/PowerLineLosses";
 import PowerAngle from "./components/PowerAngle/PowerAngle";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<PowerAngle />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/power-angle" element={<PowerAngle />} />
         <Route path='/rotor-angle' element = {<RotorAngle />} />
         <Route path='/kirchhoff' element = {<Kirchhoff />}></Route>
         <Route path='/transformer-losses' element = {<TransformerLosses />}></Route>

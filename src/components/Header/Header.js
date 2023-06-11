@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 export default function Header() {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
     const location = useLocation();
-    
+
     useEffect(() => {
         setDrawerOpen(false);
     }, [location]);
@@ -22,7 +22,7 @@ export default function Header() {
 
     return (
         <Box>
-            <AppBar sx={{ bgcolor: "#dedede" }} elevation={3}>
+            <AppBar sx={{ bgcolor: "#F5F5F5", position: 'sticky' }} elevation={9}>
                 <Toolbar>
                     <Box sx={{ marginLeft: '-20px' }}>
                         <IconButton
@@ -34,7 +34,9 @@ export default function Header() {
                             />
                         </IconButton>
                     </Box>
-                    <Typography variant="h5" sx={{ color: 'black' }}>Задачи</Typography>
+                    <Link to='/' style={{textDecoration: 'none'}}>
+                        <Typography variant="h5" sx={{ color: 'black' }}>Задачи</Typography>
+                    </Link>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -42,35 +44,35 @@ export default function Header() {
                 onClose={toggleDrawer}>
                 <div style={{ borderBottom: '1px solid #186092', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <FirstPage sx={{ color: '#186092', fontSize: '60px', height: '100%' }} onClick={closeDrawer} />
-                    <img src="https://ee.tu-varna.bg/wp-content/uploads/2020/03/Logo_Colour_TUV.png" style={{ width: '300px', marginLeft: 'auto', marginRight: 'auto' }} />
+                    <img src="https://ee.tu-varna.bg/wp-content/uploads/2020/03/Logo_Colour_TUV.png" style={{ width: '300px', marginLeft: 'auto', marginRight: 'auto' }} alt="" />
                 </div>
                 <List>
-                    <div style={{ borderBottom: '1px solid #186092'}}>
+                    <div style={{ borderBottom: '1px solid #186092' }}>
                         <Typography variant="h5">Устойчивост на ЕЕС</Typography>
-                        <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to="/power-angle" style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
                                 <Typography sx={{ fontSize: '18px' }}>Ъглови характеристики на активна и реактивна мощност</Typography>
                             </ListItem>
                         </Link>
-                        <Link to={'/rotor-angle'} style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to={'/rotor-angle'} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
                                 <Typography sx={{ fontSize: '18px' }}>Устойчивост по роторен ъгъл при малки смущения</Typography>
                             </ListItem>
                         </Link>
                     </div>
-                    <div style={{ borderBottom: '1px solid #186092'}}>
+                    <div style={{ borderBottom: '1px solid #186092' }}>
                         <Typography variant="h5">Ел. мрежи и системи</Typography>
-                        <Link to={"/power-line-losses"} style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to={"/power-line-losses"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
                                 <Typography sx={{ fontSize: '18px' }}>Загуби на напрежение в електропровод</Typography>
                             </ListItem>
                         </Link>
-                        <Link to={"/transformer-losses"} style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to={"/transformer-losses"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
                                 <Typography sx={{ fontSize: '18px' }}>Загуби на мощност в трансформатор</Typography>
                             </ListItem>
                         </Link>
-                        <Link to={"/kirchhoff"} style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to={"/kirchhoff"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
                                 <Typography sx={{ fontSize: '18px' }}>Изчисляване на просто потокоразпределение</Typography>
                             </ListItem>
