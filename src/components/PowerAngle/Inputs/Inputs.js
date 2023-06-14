@@ -1,10 +1,10 @@
-import { TextField, Grid, Tooltip, Typography, Box, InputAdornment } from "@mui/material";
+import { TextField, Grid, Box, InputAdornment } from "@mui/material";
 import styles from "./Inputs.module.css"
 import { useForm } from "../../../hooks/useForm";
 import { InlineMath } from "react-katex";
 import { useEffect } from "react";
 import calculate from "../calculate/calculate";
-export default function Inputs({setResult}) {
+export default function Inputs({ setResult }) {
     const { formValues, onChange } = useForm({
         Us: "1",
         Ur: "1",
@@ -12,9 +12,9 @@ export default function Inputs({setResult}) {
         R: "0",
         origin: "PowerAngle"
     });
-    
+
     useEffect(() => {
-        setResult(calculate({formValues}))
+        setResult(calculate({ formValues }))
     }, [formValues])
 
     return (
@@ -26,7 +26,7 @@ export default function Inputs({setResult}) {
                         variant="standard"
                         name="Us"
                         InputProps={{
-                            endAdornment: <InputAdornment position="end">p.u</InputAdornment>,
+                            endAdornment: <InputAdornment position="end">pu</InputAdornment>,
                             sx: { fontSize: '20px' }
                         }}
                         label={<span style={{ fontSize: '20px' }}><InlineMath math={'U_s'}></InlineMath></span>}
@@ -40,59 +40,53 @@ export default function Inputs({setResult}) {
             </Grid>
             <Grid item xs={12} sm={8} md={6} lg={2}>
                 <Box className={styles['item']}>
-                    <Tooltip arrow title={<Typography variant="subtitle2">This is Ur. Write tooltip here</Typography>}>
-                        <TextField
-                            className={styles['input-field']}
-                            variant="standard"
-                            name="Ur"
-                            label={<span><InlineMath math={'U_r'}></InlineMath></span>}
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">p.u</InputAdornment>,
-                            }}
-                            value={formValues.Ur}
-                            onChange={onChange}
-                            type="text"
-                            autoComplete='off'
-                        />
-                    </Tooltip>
+                    <TextField
+                        className={styles['input-field']}
+                        variant="standard"
+                        name="Ur"
+                        label={<span><InlineMath math={'U_r'}></InlineMath></span>}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">pu</InputAdornment>,
+                        }}
+                        value={formValues.Ur}
+                        onChange={onChange}
+                        type="text"
+                        autoComplete='off'
+                    />
                 </Box>
             </Grid>
             <Grid item xs={12} sm={8} md={6} lg={2}>
                 <Box className={styles['item']}>
-                    <Tooltip arrow title={<Typography variant="subtitle2">This is X. Write tooltip here</Typography>}>
-                        <TextField
-                            className={styles['input-field']}
-                            variant="standard"
-                            name="X"
-                            label={<span><InlineMath math={'X'}></InlineMath></span>}
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">p.u</InputAdornment>,
-                            }}
-                            value={formValues.X}
-                            onChange={onChange}
-                            type="text"
-                            autoComplete='off'
-                        />
-                    </Tooltip>
+                    <TextField
+                        className={styles['input-field']}
+                        variant="standard"
+                        name="X"
+                        label={<span><InlineMath math={'X'}></InlineMath></span>}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">pu</InputAdornment>,
+                        }}
+                        value={formValues.X}
+                        onChange={onChange}
+                        type="text"
+                        autoComplete='off'
+                    />
                 </Box>
             </Grid>
             <Grid item xs={12} sm={8} md={6} lg={2}>
                 <Box className={styles['item']}>
-                    <Tooltip arrow title={<Typography variant="subtitle2">This is R. Write tooltip here</Typography>}>
-                        <TextField
-                            className={styles['input-field']}
-                            variant="standard"
-                            name="R"
-                            label={<span><InlineMath math={'R'}></InlineMath></span>}
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">p.u</InputAdornment>,
-                            }}
-                            value={formValues.R}
-                            onChange={onChange}
-                            type="text"
-                            autoComplete='off'
-                        />
-                    </Tooltip>
+                    <TextField
+                        className={styles['input-field']}
+                        variant="standard"
+                        name="R"
+                        label={<span><InlineMath math={'R'}></InlineMath></span>}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">pu</InputAdornment>,
+                        }}
+                        value={formValues.R}
+                        onChange={onChange}
+                        type="text"
+                        autoComplete='off'
+                    />
                 </Box>
             </Grid>
         </>

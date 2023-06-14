@@ -6,6 +6,8 @@ import { calculateRotorAngle } from "../calculate/calculate";
 import styles from "./Inputs.module.css";
 
 const initialValues = {
+    R: 0.05,
+    X: 0.5,
     Ra: 0.004,
     Xd: 0.3,
     U1: 1,
@@ -31,7 +33,7 @@ export default function Inputs({ setResult, setDataTable }) {
         let counter = 0;
 
         for (let i = 1; i <= formValues.numberOfModes; i++) {
-            const [root, Ks, Kd, ksi, P1, delta0] = calculateRotorAngle({ formValues }, current);
+            const [root, Ks, Kd, ksi, P1, delta0, f] = calculateRotorAngle({ formValues }, current);
             const data = root;
 
             scatterDataPlus.push({
@@ -53,7 +55,8 @@ export default function Inputs({ setResult, setDataTable }) {
                 ksi,
                 roots: root,
                 P1,
-                delta0
+                delta0,
+                f
             });
 
             current -= formValues.P1 / formValues.numberOfModes;
@@ -82,21 +85,28 @@ export default function Inputs({ setResult, setDataTable }) {
     );
 
     const textFields = [
+        { name: 'R', label: "R", math: "R", endAdornment: "pu" },
+        { name: 'X', label: "X", math: "X", endAdornment: "pu" },
         { name: "Ra", label: "Ra", math: "R_a", endAdornment: "pu" },
-        { name: "Xd", label: "Xd", math: "X_d", endAdornment: "pu" },
+        { name: "Xd", label: "Xd", math: "X^\\prime_d", endAdornment: "pu" },
         { name: "U1", label: "U1", math: "U_1", endAdornment: "pu" },
         { name: "P1", label: "P1", math: "P_1", endAdornment: "pu" },
-        { name: "H", label: "H", math: "H", endAdornment: 'MW-s/MVA' },
+        { name: "H", label: "H", math: "H", endAdornment: 'MW.s/MVA' },
         { name: "U2", label: "U2", math: "U_2", endAdornment: "pu" },
         { name: "thetaU2", label: "θ", math: "\\theta", endAdornment: "deg" }
     ];
 
     return (
         <>
+            {textFields.slice(0, 2).map((field, index) => (
+                <Grid key={index} item xs={12} sm={4} md={3} lg={2} className={styles.item}>
+                    <Box>{renderTextField(field.name, field.label, field.math, field.endAdornment)}</Box>
+                </Grid>
+            ))}
             <Grid item xs={12} className={styles.item}>
                 <Typography variant="h5">Генератор:</Typography>
             </Grid>
-            {textFields.slice(0, 5).map((field, index) => (
+            {textFields.slice(2, 7).map((field, index) => (
                 <Grid key={index} item xs={12} sm={4} md={3} lg={2} className={styles.item}>
                     <Box>{renderTextField(field.name, field.label, field.math, field.endAdornment)}</Box>
                 </Grid>
@@ -104,7 +114,7 @@ export default function Inputs({ setResult, setDataTable }) {
             <Grid item xs={12} className={styles.item}>
                 <Typography variant="h5">Система:</Typography>
             </Grid>
-            {textFields.slice(5).map((field, index) => (
+            {textFields.slice(7).map((field, index) => (
                 <Grid key={index} item xs={12} sm={12} md={6} lg={2} className={styles.item}>
                     {renderTextField(field.name, field.label, field.math, field.endAdornment)}
                 </Grid>
