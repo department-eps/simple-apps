@@ -121,7 +121,7 @@ export default function Inputs({ setResult, setDataTable }) {
             ))}
             <Grid item xs={12} sm={12} md={12} lg={12} container justifyContent="center" alignItems="center">
                 <Box sx={{ textAlign: 'center', width: '150px' }}>
-                    <span id="slider-label" style={{ textAlign: 'center' }}>Брой точки</span>
+                    <span id="slider-label" style={{ textAlign: 'center' }}>Брой работни точки</span>
                     <Slider
                         className={styles['slider']}
                         min={1}

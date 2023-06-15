@@ -23,9 +23,9 @@ export default function PowerAngle() {
                         <Box className={styles['text']}>
                             <Typography variant='h5'>Задават се:</Typography>
                             <ul className={styles['list-items']}>
-                                <li>Изпратено напрежение - <InlineMath math={'U_s'} /> [pu]</li>
-                                <li>Получено напрежение - <InlineMath math={'U_r'} /> [pu]</li>
-                                <li>Активното съпротивление <InlineMath math={'R'} /> [pu]</li>
+                                <li>Предаващо напрежение - <InlineMath math={'U_s'} /> [pu]</li>
+                                <li>Приемащо напрежение - <InlineMath math={'U_r'} /> [pu]</li>
+                                <li>Активното съпротивление - <InlineMath math={'R'} /> [pu]</li>
                                 <li>Реактивното съпротивление - <InlineMath math={'X'} /> [pu]</li>
                             </ul>
                         </Box>
