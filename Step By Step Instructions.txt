@@ -1,0 +1,33 @@
+Download Node JS https://nodejs.org/en/download
+
+C:\Users\niki\Documents\GitHub\simple-apps\src
+
+>>>npm install  (инсталира node modules, дефинирани в package*.json)
+
+>>>npm start  (стартира уеб приложението на localhost:3000)
+
+Прави се нова папка в src\components, в която ще се направи приложението. Папката започва задължително с голяма буква!
+
+Създава се js файл със същото име
+
+Приложението и линковете се адват в App.js and Home.js
+
+Използва се https://jakearchibald.github.io/svgomg/?fbclid=IwAR38TP4XDQI8tgdlusLdjX0eKvZ3Wr7-8DeeUk-1vtu8gcQG2yNYlGYVS4Y
+за да се оправят проблемите с SVG файловете, които дават грешки. Грешките се появяват когато импортваме файла като компонент, в случаите когато искаме да пишем текст върху тях.
+
+
+Графики в JS https://recharts.org/en-US/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
