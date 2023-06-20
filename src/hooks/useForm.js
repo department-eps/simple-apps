@@ -38,6 +38,11 @@ export function useForm(initialValues) {
                     return;
                 };
             };
+            if (e.target.name === 'H') {
+                if (e.target.value > 999 || e.target.value < 0 || !/^[0-9.]+$/.test(e.target.value) || (e.target.value.match(/\./g) || []).length > 1 || e.target.value[0] === '.'){
+                    return;
+                }
+            }
         }
         // Power angle only
         if (initialValues.origin === 'PowerAngle') {

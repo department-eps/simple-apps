@@ -76,3 +76,16 @@ export const Lwoptions = [{
     label: '1000'
 }];
 
+export const ElectromagneticForceOptions = [{
+    value: 10,
+    label: '10'
+},
+{
+    value: 1000,
+    label: '1000',
+},
+{
+    value: 2000,
+    label: '2000'
+}];
+

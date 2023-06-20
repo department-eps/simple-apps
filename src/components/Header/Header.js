@@ -64,17 +64,25 @@ export default function Header() {
                         <Typography variant="h5">Ел. мрежи и системи</Typography>
                         <Link to={"/power-line-losses"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
-                                <Typography sx={{ fontSize: '18px' }}>Загуби на напрежение в електропровод</Typography>
+                                <Typography sx={{ fontSize: '18px' }}>Загуби на напрежение в надлъжен елемент</Typography>
                             </ListItem>
                         </Link>
                         <Link to={"/transformer-losses"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
-                                <Typography sx={{ fontSize: '18px' }}>Загуби на мощност в трансформатор</Typography>
+                                <Typography sx={{ fontSize: '18px' }}>Загуби на мощност в силов трансформатор</Typography>
                             </ListItem>
                         </Link>
                         <Link to={"/kirchhoff"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
-                                <Typography sx={{ fontSize: '18px' }}>Изчисляване на просто потокоразпределение</Typography>
+                                <Typography sx={{ fontSize: '18px' }}>Просто потокоразпределение</Typography>
+                            </ListItem>
+                        </Link>
+                    </div>
+                    <div style={{ borderBottom: '1px solid #186092' }}>
+                    <Typography variant="h5">Ел. част на централи и подстанции</Typography>
+                        <Link to={"/em-force"} style={{ textDecoration: 'none', color: 'black' }}>
+                            <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
+                                <Typography sx={{ fontSize: '18px' }}>Електромагнитна сила и напр. на огъване на правоъг. шини</Typography>
                             </ListItem>
                         </Link>
                     </div>
