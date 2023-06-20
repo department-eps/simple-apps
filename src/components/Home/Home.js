@@ -19,10 +19,6 @@ const ECHECP = [
     { id: 1, discipline: 'ЕЧЕЦП', name: 'Електромагнитна сила и напрежение на огъване на правоъгълни шини', image: '', url: '/em-force' }
 ];
 
-const ECHECP = [
-    { id: 1, discipline: 'ЕЧЕЦП', name: 'Електромагнитна сила и напрежение на огъване на правоъгълни шини', image: '', url: '/em-force'}
-]
-
 export default function Home() {
     return (
         <StyledEngineProvider injectFirst>
