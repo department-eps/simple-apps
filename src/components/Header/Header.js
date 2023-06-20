@@ -79,7 +79,7 @@ export default function Header() {
                         </Link>
                     </div>
                     <div style={{ borderBottom: '1px solid #186092' }}>
-                    <Typography variant="h5">Ел. част на централи и подстанции</Typography>
+                    <Typography variant="h5">Ел. част на ел. централи и подстанции</Typography>
                         <Link to={"/em-force"} style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem sx={{ '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.2)' } }}>
                                 <Typography sx={{ fontSize: '18px' }}>Електромагнитна сила и напр. на огъване на правоъг. шини</Typography>
