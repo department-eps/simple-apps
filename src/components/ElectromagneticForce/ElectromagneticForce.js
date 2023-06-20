@@ -30,7 +30,6 @@ export default function ElectromagneticForce() {
     // },[list of variables that will trigger the function call])
     //
     // !!! WARNING !!! If a list of variables is not defined, the app enters an infinite loop
-
     useEffect(() => {
         let iy = (1 + Math.exp(0.01 / Ta)) * Math.sqrt(2) * Isec;
         let datatemp = [];
